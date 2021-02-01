@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `Now You See It`,
@@ -70,6 +74,26 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: `@robinmetral/gatsby-source-s3`,
+      options: {
+        aws: {
+          accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+          secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+          region: process.env.AWS_REGION,
+        },
+        buckets: ["nowyouseeitstripes"],
+        expiration: 120,
+      },
+    },
+    {
+      resolve: "gatsby-source-google-spreadsheets",
+      options: {
+        spreadsheetId: "1GDXpnoc8ywPVlpN2qzO1s6Qelv8U4qWtnjA5AluDNpg",
+        apiKey: process.env.GOOGLE_SHEETS_API
+      }
+    },
+    "gatsby-plugin-catch-links"
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
