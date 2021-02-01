@@ -1,6 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-import Newsletter from "../components/newsletter"
+import NewsletterForm from "../components/newsletterform"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
@@ -29,9 +29,11 @@ const BlogPostTemplate = ({ data, location }) => {
           itemProp="articleBody"
         />
         <hr />
-        <footer>
-          <Newsletter />
-        </footer>
+        <div className="pt-3 pb-3">
+          <NewsletterForm>
+            Like what you See? You can get more articles and videos by joining the Now You See It newsletter. No spam, ever. Enter your email to join hundreds of others getting ad-free, algorithm-free media criticism.
+          </NewsletterForm>
+        </div>
       </article>
       <hr />
       <nav className="blog-post-nav">

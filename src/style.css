@@ -86,7 +86,7 @@ body {
 }
 
 footer {
-  padding: var(--spacing-6) var(--spacing-0);
+  padding-top: var(--spacing-6);
 }
 
 hr {
@@ -266,6 +266,14 @@ input {
 
 /* Custom classes */
 
+/* Layout */
+
+.global-wrapper {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
 .global-wrapper[data-is-full-layout="false"] {
   margin: var(--spacing-0) auto;
   max-width: var(--maxWidth-wrapper);
@@ -287,6 +295,12 @@ input {
   font-weight: var(--fontWeight-black);
   margin-bottom: var(--spacing-4);
 }
+
+.site-content {
+  flex: 1;
+}
+
+/* Blog */
 
 .post-list-item {
   margin-bottom: var(--spacing-8);

@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Newsletter from "../components/newsletter"
+import NewsletterForm from "../components/newsletterform"
 
 export default function Stripes({ location }) {
   const data = useStaticQuery(graphql`
@@ -51,7 +51,9 @@ export default function Stripes({ location }) {
     <Layout location={location} title={siteTitle} fullLayout={true}>
       <SEO title="Stripes Gallery" />
       <div className="col-lg-6 p-2">
-        <Newsletter />
+        <NewsletterForm>
+          Like what you See? You can get more articles and videos by joining the Now You See It newsletter. No spam, ever. Enter your email to join hundreds of others getting ad-free, algorithm-free media criticism.
+          </NewsletterForm>
       </div>
       <div className="stripes-container">
         {s3sheetCombined.map(image => (

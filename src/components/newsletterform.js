@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import addToMailchimp from 'gatsby-plugin-mailchimp'
 
-export default function Newsletter() {
+export default function NewsletterForm({ children }) {
     const [emailInput, setEmailInput] = useState("");
     const [mailChimpMessage, setMailChimpMessage] = useState({});
 
@@ -16,7 +16,7 @@ export default function Newsletter() {
     return (
         <div>
             <p>
-                Like what you See? You can get more articles and videos by joining the Now You See It newsletter. No spam, ever. Enter your email to join hundreds of others getting ad-free, algorithm-free media criticism.
+                {children}
             </p>
             <div className="w-100">
                 <form onSubmit={handleSubmit} className="newsletter-form position-relative mb-3 mt-3">
