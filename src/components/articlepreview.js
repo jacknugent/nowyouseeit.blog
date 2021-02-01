@@ -1,14 +1,17 @@
 import React from "react"
 import { Link } from "gatsby"
+import Img from "gatsby-image"
 
 export default function ArticlePreview({ post }) {
     return (
-        post && <article
+        post &&
+        <article
             className="post-list-item"
             itemScope
             itemType="http://schema.org/Article"
         >
             <header>
+                {post.frontmatter.previewPhoto && <Img fluid={post.frontmatter.previewPhoto.childImageSharp.fluid} />}
                 <h2>
                     <Link to={post.fields.slug} itemProp="url">
                         <span itemProp="headline">{post.frontmatter.title || post.fields.slug}</span>

@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "gatsby"
+import Header from "../components/header"
 
 const Layout = ({ location, title, children, fullLayout }) => {
   const rootPath = `${__PATH_PREFIX__}/`
@@ -11,16 +11,11 @@ const Layout = ({ location, title, children, fullLayout }) => {
       data-is-root-path={isRootPath}
       data-is-full-layout={!!fullLayout}
     >
-      <header
-        className="global-header"
-        data-is-full-layout={!!fullLayout}
-      >
-        <h1 className="heading">
-          <Link to="/">{title}</Link>
-        </h1>
-      </header>
-      <main className="site-content">{children}</main>
-      <footer>© {new Date().getFullYear()}</footer>
+      <Header title={title} />
+      <main className="site-content" data-is-full-layout={!!fullLayout}>
+        {children}
+      </main>
+      <footer>© {new Date().getFullYear()} Now You See It</footer>
     </body>
   )
 }

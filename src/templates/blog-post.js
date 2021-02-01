@@ -3,6 +3,7 @@ import { Link, graphql } from "gatsby"
 import NewsletterForm from "../components/newsletterform"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Img from "gatsby-image"
 
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
@@ -21,7 +22,8 @@ const BlogPostTemplate = ({ data, location }) => {
         itemType="http://schema.org/Article"
       >
         <header>
-          <h1 itemProp="headline">{post.frontmatter.title}</h1>
+          {post.frontmatter.titlePhoto && <Img fluid={post.frontmatter.titlePhoto.childImageSharp.fluid} />}
+          <h1 itemProp="headline" className="headline">{post.frontmatter.title}</h1>
           <p>{post.frontmatter.date}</p>
         </header>
         <section
@@ -88,6 +90,13 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        titlePhoto {
+          childImageSharp {
+            fluid(maxWidth: 700) {
+             ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {

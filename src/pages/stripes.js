@@ -50,10 +50,14 @@ export default function Stripes({ location }) {
   return (
     <Layout location={location} title={siteTitle} fullLayout={true}>
       <SEO title="Stripes Gallery" />
-      <div className="col-lg-6 p-2">
-        <NewsletterForm>
-          Like what you See? You can get more articles and videos by joining the Now You See It newsletter. No spam, ever. Enter your email to join hundreds of others getting ad-free, algorithm-free media criticism.
+      <div className="d-flex justify-content-center">
+        <div className="max-width-wrapper pb-3">
+          <h1>Stripes Gallery</h1>
+          <p>Learn more <a href="https://www.youtube.com/watch?v=Y1U4YkNkoG0">here</a>.</p>
+          <NewsletterForm>
+            Like what you See? You can get more articles and videos by joining the Now You See It newsletter. No spam, ever. Enter your email to join hundreds of others getting ad-free, algorithm-free media criticism.
           </NewsletterForm>
+        </div>
       </div>
       <div className="stripes-container">
         {s3sheetCombined.map(image => (
