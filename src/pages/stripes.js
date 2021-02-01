@@ -3,6 +3,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Newsletter from "../components/newsletter"
 
 export default function Stripes({ location }) {
   const data = useStaticQuery(graphql`
@@ -47,18 +48,19 @@ export default function Stripes({ location }) {
   }))
 
   return (
-    <Layout location={location} title={siteTitle} customLayout={true}>
+    <Layout location={location} title={siteTitle} fullLayout={true}>
       <SEO title="Stripes Gallery" />
-      <h1 className="d-flex justify-content-center">Stripes In Media</h1>
+      <div className="col-lg-6 p-2">
+        <Newsletter />
+      </div>
       <div className="stripes-container">
         {s3sheetCombined.map(image => (
           <div
             className="stripe-container position-relative"
             key={image.id}
             style={{
-              width: `${
-                image.localFile.childImageSharp.fluid.aspectRatio * 350
-              }px`,
+              width: `${image.localFile.childImageSharp.fluid.aspectRatio * 350
+                }px`,
               flexGrow: image.localFile.childImageSharp.fluid.aspectRatio * 350,
             }}
           >
@@ -69,9 +71,8 @@ export default function Stripes({ location }) {
             <div
               className="stripe-image-background"
               style={{
-                paddingBottom: `${
-                  100 / image.localFile.childImageSharp.fluid.aspectRatio
-                }%`,
+                paddingBottom: `${100 / image.localFile.childImageSharp.fluid.aspectRatio
+                  }%`,
               }}
             >
               <div className="stripe-image">
@@ -81,6 +82,6 @@ export default function Stripes({ location }) {
           </div>
         ))}
       </div>
-    </Layout>
+    </Layout >
   )
 }

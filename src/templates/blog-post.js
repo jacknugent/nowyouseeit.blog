@@ -1,7 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-
-import Bio from "../components/bio"
+import Newsletter from "../components/newsletter"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
@@ -31,10 +30,12 @@ const BlogPostTemplate = ({ data, location }) => {
         />
         <hr />
         <footer>
-          <Bio />
+          <Newsletter />
         </footer>
       </article>
+      <hr />
       <nav className="blog-post-nav">
+        <h4>See More</h4>
         <ul
           style={{
             display: `flex`,
