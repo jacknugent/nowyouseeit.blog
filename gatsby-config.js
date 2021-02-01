@@ -6,7 +6,7 @@ module.exports = {
   siteMetadata: {
     title: `Now You See It`,
     author: {
-      name: `Now You See It`,
+      name: `Jack Nugent`,
       summary: `Media analysis that searches for meaning in unexpected places`,
     },
     description: `A blog for Now You See It`,
@@ -90,10 +90,10 @@ module.exports = {
       resolve: "gatsby-source-google-spreadsheets",
       options: {
         spreadsheetId: "1GDXpnoc8ywPVlpN2qzO1s6Qelv8U4qWtnjA5AluDNpg",
-        apiKey: process.env.GOOGLE_SHEETS_API
-      }
+        apiKey: process.env.GOOGLE_SHEETS_API,
+      },
     },
-    "gatsby-plugin-catch-links"
+    "gatsby-plugin-catch-links",
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
