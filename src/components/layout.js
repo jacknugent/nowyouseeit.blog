@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 
-const Layout = ({ location, title, children }) => {
+const Layout = ({ location, title, children, customLayout }) => {
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath
   let header
@@ -21,12 +21,19 @@ const Layout = ({ location, title, children }) => {
   }
 
   return (
-    <div className="global-wrapper" data-is-root-path={isRootPath}>
-      <header className="global-header">{header}</header>
+    <div
+      className={!customLayout && "global-wrapper"}
+      data-is-root-path={isRootPath}
+    >
+      <header
+        className={
+          customLayout ? "global-header-custom-layout" : "global-header"
+        }
+      >
+        {header}
+      </header>
       <main>{children}</main>
-      <footer>
-        © {new Date().getFullYear()}
-      </footer>
+      <footer>© {new Date().getFullYear()}</footer>
     </div>
   )
 }
