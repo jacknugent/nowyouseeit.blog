@@ -3,7 +3,6 @@ import { Link } from "gatsby"
 import Img from "gatsby-image"
 
 export default function ArticlePreview({ post, previewImage }) {
-    console.log(previewImage)
     return (
         post &&
         <article
