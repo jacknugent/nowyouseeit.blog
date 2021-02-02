@@ -6,7 +6,7 @@ const Layout = ({ location, title, children, fullLayout }) => {
   const isRootPath = location.pathname === rootPath
 
   return (
-    <body
+    <div
       className="global-wrapper"
       data-is-root-path={isRootPath}
       data-is-full-layout={!!fullLayout}
@@ -16,7 +16,7 @@ const Layout = ({ location, title, children, fullLayout }) => {
         {children}
       </main>
       <footer>© {new Date().getFullYear()} Now You See It</footer>
-    </body>
+    </div>
   )
 }
 

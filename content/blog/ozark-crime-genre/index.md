@@ -2,8 +2,7 @@
 title: Ozark and Innovating Crime Genre
 date: "2016-08-25T00:00:00.000Z"
 description: A closer look at the innovations of Ozark's story, compared to it's criminal predeccessors.
-titlePhoto: ./ozark.png
-previewPhoto: ./ozard.png
+previewImage: ozark.jpg
 ---
 
 I believe that the best contemporary crime TV shows are naturally revisionist. These shows toy with the genre expectations deeply woven into our collective unconscious. The perfect embodiment of this idea is Pulp Fiction (1994), a movie that brought into question the events after a murder gone wrong. If you stay after the cool violence, the grandiose becomes the silly and messy, and movies hadn’t done that before.
@@ -30,7 +29,7 @@ There are several new aspects of crime added to Ozark that feel fun and fresh. M
 
 In Ozark, nobody really cares.
 
-![Ozark Screenshot](./ozark.png)
+![Ozark Screenshot](./ozark.jpg)
 
 “Your father’s laundering money for a drug cartel. I shit you not.” — that’s at the end the second episode!
 

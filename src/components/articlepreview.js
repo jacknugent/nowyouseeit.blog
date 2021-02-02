@@ -2,7 +2,8 @@ import React from "react"
 import { Link } from "gatsby"
 import Img from "gatsby-image"
 
-export default function ArticlePreview({ post }) {
+export default function ArticlePreview({ post, previewImage }) {
+    console.log(previewImage)
     return (
         post &&
         <article
@@ -10,10 +11,11 @@ export default function ArticlePreview({ post }) {
             itemScope
             itemType="http://schema.org/Article"
         >
+            <hr />
             <header>
-                {post.frontmatter.previewPhoto && <Img fluid={post.frontmatter.previewPhoto.childImageSharp.fluid} />}
-                <h2>
+                <h2 className="mt-4">
                     <Link to={post.fields.slug} itemProp="url">
+                        {previewImage && <Img className="mb-2" fluid={previewImage.fluid} />}
                         <span itemProp="headline">{post.frontmatter.title || post.fields.slug}</span>
                     </Link>
                 </h2>

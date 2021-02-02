@@ -311,7 +311,7 @@ input {
 }
 
 .post-list-item p {
-  margin-bottom: var(--spacing-0);
+  margin-bottom: var(--spacing-2);
 }
 
 .post-list-item h2 {

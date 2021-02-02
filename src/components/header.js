@@ -8,8 +8,8 @@ export default function Header() {
         query HeaderQuery {
             avatar: file(absolutePath: { regex: "/profile-pic.png/" }) {
                 childImageSharp {
-                fixed(width: 50, height: 50, quality: 95) {
-                    ...GatsbyImageSharpFixed
+                    fixed(width: 50, height: 50, quality: 95) {
+                        ...GatsbyImageSharpFixed
                     }
                 }
             }
@@ -46,7 +46,7 @@ export default function Header() {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav" className="justify-content-between">
                 <Nav>
-                    <li class="nav-item">
+                    <li className="nav-item">
                         <Link
                             className="nav-link"
                             to="/"
@@ -54,7 +54,7 @@ export default function Header() {
                             Posts
                         </Link>
                     </li>
-                    <li class="nav-item">
+                    <li className="nav-item">
                         <Link
                             className="nav-link"
                             to="/newsletter"
@@ -62,7 +62,7 @@ export default function Header() {
                             Newsletter
                         </Link>
                     </li>
-                    <li class="nav-item">
+                    <li className="nav-item">
                         <Link
                             className="nav-link"
                             to="/stripes"

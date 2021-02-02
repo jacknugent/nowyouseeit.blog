@@ -8,6 +8,7 @@ const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
   const summary = data.site.siteMetadata?.author.summary
+  const images = data.allImageSharp.nodes
 
   if (posts.length === 0) {
     return (
@@ -29,7 +30,12 @@ const BlogIndex = ({ data, location }) => {
       <p>{summary}</p>
       <h2 className="pt-3">Posts</h2>
       <ol className="ps-0" style={{ listStyle: `none` }}>
-        {posts.map(post => <ArticlePreview post={post} />)}
+        {posts.map(post =>
+          <ArticlePreview
+            key={post.frontmatter.title}
+            post={post}
+            previewImage={images.find(i => i.fluid.originalName === post.frontmatter.previewImage)} />
+        )}
       </ol>
     </Layout>
   )
@@ -57,13 +63,15 @@ export const pageQuery = graphql`
           date(formatString: "MMMM DD, YYYY")
           title
           description
-          previewPhoto {
-            childImageSharp {
-              fluid(maxWidth: 700) {
-               ...GatsbyImageSharpFluid
-              }
-            }
-          }
+          previewImage
+        }
+      }
+    }
+    allImageSharp {
+      nodes {
+        fluid(maxWidth: 700) {
+          ...GatsbyImageSharpFluid
+          originalName
         }
       }
     }
