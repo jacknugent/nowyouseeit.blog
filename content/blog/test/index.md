@@ -1,0 +1,3 @@
+---
+image: ./gatsby-icon.png
+---
