@@ -1,9 +1,14 @@
-import React from "react"
-import Header from "../components/header"
+import React from "react";
+import Header from "./header";
 
-const Layout = ({ location, title, children, fullLayout }) => {
-  const rootPath = `${__PATH_PREFIX__}/`
-  const isRootPath = location.pathname === rootPath
+type Props = {
+  location: any;
+  children: React.ReactChild;
+  fullLayout?: boolean;
+}
+
+const Layout = ({ location, children, fullLayout }: Props) => {
+  const isRootPath = location.pathname === "/"
 
   return (
     <div
@@ -11,7 +16,7 @@ const Layout = ({ location, title, children, fullLayout }) => {
       data-is-root-path={isRootPath}
       data-is-full-layout={!!fullLayout}
     >
-      <Header title={title} />
+      <Header />
       <main className="site-content" data-is-full-layout={!!fullLayout}>
         {children}
       </main>

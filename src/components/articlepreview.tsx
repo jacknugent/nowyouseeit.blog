@@ -1,10 +1,37 @@
-import React from "react"
-import { Link, useStaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
+import React from "react";
+import { graphql, Link, useStaticQuery } from "gatsby";
+import Img, { FluidObject } from "gatsby-image";
 
-export default function ArticlePreview({ post }) {
+type Props = {
+    post: {
+        excerpt: string;
+        fields: {
+            slug: string;
+        }
+        frontmatter: {
+            title: string;
+            date: Date;
+            description: string;
+            previewImage: string;
+        }
+    }
+}
+
+type StaticQuery = {
+    allFile: {
+        nodes: Array<{
+            relativePath: string;
+            sourceInstanceName: string;
+            childImageSharp: {
+                fluid: FluidObject;
+            };
+        }>
+    }
+}
+
+export default function ArticlePreview({ post }: Props) {
     // TODO: check to see if there's a solution to this: https://github.com/gatsbyjs/gatsby/issues/4123
-    const allBlogImages = useStaticQuery(graphql`
+    const allBlogImages = useStaticQuery<StaticQuery>(graphql`
     query {
         allFile(filter: {sourceInstanceName: {eq: "blog"}, childImageSharp: {fixed: {width: {gt: 0}}}}) {
         nodes {
@@ -18,10 +45,9 @@ export default function ArticlePreview({ post }) {
           }
         }
       }
-    `)
+    `);
 
-    const previewImage = allBlogImages.allFile.nodes.find(f => "/" + f.relativePath === (post.fields.slug + post.frontmatter?.previewImage))?.childImageSharp;
-    console.log(previewImage);
+    const previewImage = allBlogImages.allFile.nodes.find((f: { relativePath: string; }) => "/" + f.relativePath === (post.fields.slug + post.frontmatter?.previewImage))?.childImageSharp;
 
     return (
         post &&
@@ -49,5 +75,5 @@ export default function ArticlePreview({ post }) {
                 />
             </section>
         </article>
-    )
+    );
 }

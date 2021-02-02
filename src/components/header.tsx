@@ -1,10 +1,10 @@
-import React from "react"
-import { Nav, Navbar } from "react-bootstrap"
-import { useStaticQuery, graphql, Link } from "gatsby"
-import Image from "gatsby-image"
-import Twitter from "../components/icons/twitter"
-import YouTube from "../components/icons/youtube"
-import Patreon from "../components/icons/patreon"
+import React from "react";
+import { Nav, Navbar } from "react-bootstrap";
+import { graphql, Link, useStaticQuery } from "gatsby";
+import Image from "gatsby-image";
+import Patreon from "./icons/patreon";
+import Twitter from "./icons/twitter";
+import YouTube from "./icons/youtube";
 
 export default function Header() {
     const data = useStaticQuery(graphql`
