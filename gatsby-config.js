@@ -13,6 +13,8 @@ module.exports = {
     siteUrl: `https://gatsby-starter-blog-demo.netlify.app/`,
     social: {
       twitter: `jacknugent27`,
+      youtube: `nowyouseeit`,
+      patreon: `nowyouseeit`
     },
   },
   plugins: [

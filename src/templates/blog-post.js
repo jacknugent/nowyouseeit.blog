@@ -1,5 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import Img from "gatsby-image";
 import NewsletterForm from "../components/newsletterform"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -8,6 +9,8 @@ const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
+
+  const previewImage = data.allFile.nodes.find(f => "/" + f.relativePath === (post.fields.slug + post.frontmatter?.titleImage))?.childImageSharp;
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -20,6 +23,7 @@ const BlogPostTemplate = ({ data, location }) => {
         itemScope
         itemType="http://schema.org/Article"
       >
+        {previewImage && <Img fluid={previewImage} />}
         <header>
           <h1 itemProp="headline" className="headline">{post.frontmatter.title}</h1>
           <p>{post.frontmatter.date}</p>
@@ -80,7 +84,21 @@ export const pageQuery = graphql`
         title
       }
     }
+    allFile(filter: {sourceInstanceName: {eq: "blog"}, childImageSharp: {fixed: {width: {gt: 0}}}}) {
+      nodes {
+        relativePath
+        sourceInstanceName
+        childImageSharp {
+          fluid(maxWidth: 600) {
+              ...GatsbyImageSharpFluid
+              }
+          }
+        }
+      }
     markdownRemark(id: { eq: $id }) {
+      fields {
+        slug
+      }
       id
       excerpt(pruneLength: 160)
       html
@@ -88,6 +106,7 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        titleImage
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {

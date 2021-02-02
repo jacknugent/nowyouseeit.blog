@@ -248,7 +248,7 @@ a:focus {
 }
 
 /* Button */
-button {
+.newsletter-button {
   background-color: var(--color-secondary);
   color: black;
   border: none;
@@ -259,7 +259,7 @@ button {
   transition: background-color 200ms linear, transform 200ms linear, box-shadow 200ms linear;
 }
 
-button:hover {
+.newsletter-button:hover {
   background-color: var(--color-secondary-light);
   transform: translateY(-2px);
   box-shadow: 0px 4px 15px rgba(50,1,1,0.15);
@@ -280,6 +280,13 @@ input {
   min-height: 100vh;
   flex-direction: column;
   padding: 0 var(--spacing-5) var(--spacing-5) var(--spacing-5);
+  background-color: #e6e7ed;
+}
+
+@media (max-width: 576px) {
+  .global-wrapper {
+    padding: 0 var(--spacing-2) var(--spacing-2) var(--spacing-2);
+  }
 }
 
 .header-container {
@@ -301,6 +308,31 @@ input {
   margin: var(--spacing-0) auto;
   max-width: var(--maxWidth-wrapper);
   padding: var(--spacing-5);
+}
+
+/* Icons */
+
+.icons {
+  height: 30px;
+}
+
+.icons-small {
+  height: 26px;
+}
+
+.icons-small path,
+.icons path {
+  fill: var(--color-text-light);
+}
+
+.icon-container {
+  margin-left: 1.25rem;
+}
+
+@media (max-width: 576px) {
+  .icon-container {
+    display: none;
+  }
 }
 
 /* Blog */

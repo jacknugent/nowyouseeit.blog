@@ -15,7 +15,7 @@ const Layout = ({ location, title, children, fullLayout }) => {
       <main className="site-content" data-is-full-layout={!!fullLayout}>
         {children}
       </main>
-      <footer>© {new Date().getFullYear()} Now You See It</footer>
+      <footer>© {new Date().getFullYear()} Now You See It </footer>
     </div>
   )
 }
