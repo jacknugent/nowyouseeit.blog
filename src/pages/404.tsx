@@ -1,14 +1,32 @@
-import React from "react"
-import { graphql } from "gatsby"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import React from "react";
+import { graphql } from "gatsby";
+import Layout from "../components/layout";
+import SEO from "../components/seo";
 
-const NotFoundPage = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata.title
+type Props = {
+  data: {
+    site: {
+      siteMetadata: {
+        title: string;
+      }
+    }
+    allMarkdownRemark: {
+      nodes: Array<Post>
+    }
+  }
+}
+
+type Post = {
+  fields: {
+    slug: string;
+  }
+}
+
+const NotFoundPage = ({ data }: Props) => {
   const post = data.allMarkdownRemark.nodes && data.allMarkdownRemark.nodes[0]
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout>
       <SEO title="404: Not Found" />
       <h1>404: Not Found</h1>
       <p>You just hit a route that doesn&#39;t exist. How about viewing my <a href={post.fields.slug}>latest post instead?</a></p>
@@ -20,11 +38,6 @@ export default NotFoundPage
 
 export const pageQuery = graphql`
 {
-  site {
-    siteMetadata {
-      title
-    }
-  }
   allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}, limit: 1) {
     nodes {
       fields {

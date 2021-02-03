@@ -1,12 +1,38 @@
-import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import NewsletterForm from "../components/newsletterform"
+import React from "react";
+import { graphql, useStaticQuery } from "gatsby";
+import Img, { FluidObject } from "gatsby-image";
+import Layout from "../components/layout";
+import NewsletterForm from "../components/newsletterform";
+import SEO from "../components/seo";
 
-export default function Stripes({ location }) {
-  const data = useStaticQuery(graphql`
+type StaticQuery = {
+  site: {
+    siteMetadata: {
+      title: string;
+    }
+  }
+  allS3Object: {
+    nodes: Array<{
+      localFile: {
+        childImageSharp: {
+          fluid: FluidObject;
+        }
+        url: string;
+      }
+    }>
+  }
+  allGoogleStripesSheet: {
+    nodes: Array<{
+      aWSLink: string;
+      description: string;
+      name: string;
+      id: string;
+    }>
+  }
+}
+
+export default function Stripes() {
+  const data = useStaticQuery<StaticQuery>(graphql`
     query StripesQuery {
       site {
         siteMetadata {
@@ -48,7 +74,7 @@ export default function Stripes({ location }) {
   }))
 
   return (
-    <Layout location={location} title={siteTitle} fullLayout={true}>
+    <Layout fullLayout={true}>
       <SEO title="Stripes Gallery" />
       <div className="d-flex justify-content-center">
         <div className="max-width-wrapper pb-3">

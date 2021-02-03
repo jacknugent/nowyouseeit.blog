@@ -2,20 +2,14 @@ import React from "react";
 import Header from "./header";
 
 type Props = {
-  location: any;
-  children: React.ReactChild;
+  children: React.ReactNode;
   fullLayout?: boolean;
 }
 
-const Layout = ({ location, children, fullLayout }: Props) => {
-  const isRootPath = location.pathname === "/"
+const Layout = ({ children, fullLayout }: Props) => {
 
   return (
-    <div
-      className="global-wrapper"
-      data-is-root-path={isRootPath}
-      data-is-full-layout={!!fullLayout}
-    >
+    <div className="global-wrapper" data-is-full-layout={!!fullLayout}>
       <Header />
       <main className="site-content" data-is-full-layout={!!fullLayout}>
         {children}

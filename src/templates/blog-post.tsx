@@ -1,19 +1,62 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
-import Img from "gatsby-image";
-import NewsletterForm from "../components/newsletterform"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import React from "react";
+import { graphql, Link } from "gatsby";
+import Img, { FluidObject } from "gatsby-image";
+import Layout from "../components/layout";
+import NewsletterForm from "../components/newsletterform";
+import SEO from "../components/seo";
 
-const BlogPostTemplate = ({ data, location }) => {
+type Props = {
+  data: {
+    allFile: {
+      nodes: Array<{
+        relativePath: string;
+        sourceInstanceName: string;
+        childImageSharp?: {
+          fluid: FluidObject;
+        }
+      }>
+    }
+    markdownRemark: {
+      fields: {
+        slug: string;
+      }
+      id: string;
+      excerpt: string;
+      html: string;
+      frontmatter: {
+        title: string;
+        date: string;
+        description: string;
+        titleImage: string;
+      }
+    }
+    previous: {
+      fields: {
+        slug: string;
+      }
+      frontmatter: {
+        title: string;
+      }
+    }
+    next: {
+      fields: {
+        slug: string;
+      }
+      frontmatter: {
+        title: string;
+      }
+    }
+  }
+}
+
+const BlogPostTemplate = ({ data }: Props) => {
   const post = data.markdownRemark
-  const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
 
   const previewImage = data.allFile.nodes.find(f => "/" + f.relativePath === (post.fields.slug + post.frontmatter?.titleImage))?.childImageSharp;
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout>
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
@@ -23,7 +66,7 @@ const BlogPostTemplate = ({ data, location }) => {
         itemScope
         itemType="http://schema.org/Article"
       >
-        {previewImage && <Img fluid={previewImage} />}
+        {previewImage && <Img fluid={previewImage.fluid} />}
         <header>
           <h1 itemProp="headline" className="headline">{post.frontmatter.title}</h1>
           <p>{post.frontmatter.date}</p>
@@ -42,15 +85,7 @@ const BlogPostTemplate = ({ data, location }) => {
       <hr />
       <nav className="blog-post-nav">
         <h4>See More</h4>
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
+        <ul className="d-flex flex-wrap justify-content-between list-unstyled p-0">
           <li>
             {previous && (
               <Link to={previous.fields.slug} rel="prev">
@@ -79,11 +114,6 @@ export const pageQuery = graphql`
     $previousPostId: String
     $nextPostId: String
   ) {
-    site {
-      siteMetadata {
-        title
-      }
-    }
     allFile(filter: {sourceInstanceName: {eq: "blog"}, childImageSharp: {fixed: {width: {gt: 0}}}}) {
       nodes {
         relativePath
