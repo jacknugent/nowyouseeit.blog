@@ -293,6 +293,13 @@ input {
   max-width: var(--maxWidth-4xl);
   display: flex;
   justify-content: center;
+  padding-bottom: var(--spacing-2);
+}
+
+@media (max-width: 576px) {
+  .header-container {
+    padding-bottom: var(--spacing-0);
+  }
 }
 
 .nav-link.active, .nav-link:hover {
@@ -308,6 +315,12 @@ input {
   margin: var(--spacing-0) auto;
   max-width: var(--maxWidth-wrapper);
   padding: var(--spacing-5);
+}
+
+@media (max-width: 576px) {
+  .site-content[data-is-full-layout="false"] {
+    padding: var(--spacing-1);
+  }
 }
 
 /* Icons */

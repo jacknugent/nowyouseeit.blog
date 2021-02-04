@@ -36,7 +36,7 @@ export default function Header() {
     const social = data.site.siteMetadata?.social
 
     return (
-        <Navbar className="header-container w-100 d-flex m-auto pt-3 pb-4" bg="none" expand="lg">
+        <Navbar className="header-container w-100 d-flex m-auto pt-3" bg="none" expand="lg">
             <Link to="/">
                 {avatar && (
                     <Image
