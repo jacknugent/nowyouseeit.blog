@@ -26,8 +26,7 @@ deploy_production:
   script:
     - pip install awscli
     - aws s3 sync public/ s3://nowyouseeitblog/ --delete --cache-control max-age=31557600,public
-    - aws cloudfront create-invalidation --distribution-id E1MH1GB0WBFG9N --paths '/*' && aws cloudfront create-invalidation --distribution-id
-E1L7N8HRHGPEL6 --paths '/*'
+    - aws cloudfront create-invalidation --distribution-id E1MH1GB0WBFG9N --paths '/*' && aws cloudfront create-invalidation --distribution-id E1L7N8HRHGPEL6 --paths '/*'
   environment:
     name: PROD
     url: http://nowyouseeit.blog
