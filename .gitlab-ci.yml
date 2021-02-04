@@ -17,7 +17,7 @@ build_site:
     paths:
       - public
   only:
-    - master
+    - main
     - tags
 
 deploy_production:
@@ -31,4 +31,4 @@ deploy_production:
     name: PROD
     url: http://nowyouseeit.blog
   only:
-    - master
+    - main
