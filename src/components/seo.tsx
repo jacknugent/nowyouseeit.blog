@@ -76,7 +76,7 @@ const SEO = ({ description, lang, meta, title }: Props) => {
           name: `twitter:description`,
           content: metaDescription,
         },
-      ].concat(meta)}
+      ].concat(meta || [])}
     />
   )
 }

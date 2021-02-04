@@ -18,7 +18,6 @@ build_site:
       - public
   only:
     - main
-    - tags
 
 deploy_production:
   image: python:latest
