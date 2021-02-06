@@ -17,13 +17,13 @@ type StaticQuery = {
         childImageSharp: {
           fluid: FluidObject;
         }
-        url: string;
+        name: string;
       }
     }>
   }
   allGoogleStripesSheet: {
     nodes: Array<{
-      aWSLink: string;
+      aWSFile: string;
       description: string;
       name: string;
       id: string;
@@ -34,11 +34,6 @@ type StaticQuery = {
 export default function Stripes() {
   const data = useStaticQuery<StaticQuery>(graphql`
     query StripesQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
       allS3Object {
         nodes {
           localFile {
@@ -47,13 +42,13 @@ export default function Stripes() {
                 ...GatsbyImageSharpFluid
               }
             }
-            url
+            name
           }
         }
       }
       allGoogleStripesSheet {
         nodes {
-          aWSLink
+          aWSFile
           description
           name
           id
@@ -62,14 +57,13 @@ export default function Stripes() {
     }
   `)
 
-  const siteTitle = data.site.siteMetadata.title
   const s3images = data.allS3Object.nodes
   const sheetRows = data.allGoogleStripesSheet.nodes
 
   const s3sheetCombined = s3images.map(i => ({
     ...i,
     ...sheetRows.find(
-      r => new URL(r.aWSLink).pathname === new URL(i.localFile.url).pathname
+      r => r.aWSFile === i.localFile.name
     ),
   }))
 
@@ -96,10 +90,11 @@ export default function Stripes() {
               flexGrow: image.localFile.childImageSharp.fluid.aspectRatio * 350,
             }}
           >
-            <div className="image-description p-2 bg-dark w-100">
-              <p className="text-light mb-1">{image.name}</p>
-              <p className="text-light mb-0">{image.description}</p>
-            </div>
+            {image.name &&
+              <div className="image-description p-2 bg-dark w-100">
+                <p className="text-light mb-1">{image.name}</p>
+                <p className="text-light mb-0">{image.description}</p>
+              </div>}
             <div
               className="stripe-image-background"
               style={{
