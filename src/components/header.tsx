@@ -76,7 +76,7 @@ export default function Header() {
                         </Link>
                     </li>
                 </Nav>
-                <div>
+                <div className="icons-container">
                     <a className="icon-container" href={`https://twitter.com/${social?.twitter || ``}`} target="_blank">
                         <YouTube />
                     </a>

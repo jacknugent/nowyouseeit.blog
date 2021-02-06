@@ -347,9 +347,14 @@ input {
   margin-left: 1.25rem;
 }
 
-@media (max-width: 576px) {
+@media (max-width: 990px) {
+  .icons-container {
+    display: flex;
+    justify-content: space-around;
+    margin: var(--spacing-4) 0;
+  }
   .icon-container {
-    display: none;
+    margin-right: 1.25rem;
   }
 }
 
