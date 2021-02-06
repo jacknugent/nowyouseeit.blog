@@ -13,7 +13,7 @@ type StaticQuery = {
   }
   allS3Object: {
     nodes: Array<{
-      localFile: {
+      localFile?: {
         childImageSharp: {
           fluid: FluidObject;
         }
@@ -24,9 +24,9 @@ type StaticQuery = {
   allGoogleStripesSheet: {
     nodes: Array<{
       aWSFile: string;
-      description: string;
+      description?: string;
       name: string;
-      id: string;
+      credit?: string;
     }>
   }
 }
@@ -51,7 +51,7 @@ export default function Stripes() {
           aWSFile
           description
           name
-          id
+          credit
         }
       }
     }
@@ -60,12 +60,21 @@ export default function Stripes() {
   const s3images = data.allS3Object.nodes
   const sheetRows = data.allGoogleStripesSheet.nodes
 
-  const s3sheetCombined = s3images.map(i => ({
-    ...i,
-    ...sheetRows.find(
-      r => r.aWSFile === i.localFile.name
-    ),
-  }))
+  const s3sheetCombined = s3images
+    .filter(i => i.localFile != null)
+    .map(i => {
+      const s3SheetMatch = sheetRows.find(
+        r => i.localFile.name === r.aWSFile
+      )
+
+      if (!s3SheetMatch)
+        console.error(`Failed to find row in Google Sheet with name ${i.localFile.name}`)
+
+      return {
+        ...i,
+        ...s3SheetMatch,
+      }
+    })
 
   return (
     <Layout fullLayout={true}>
@@ -83,7 +92,7 @@ export default function Stripes() {
         {s3sheetCombined.map(image => (
           <div
             className="stripe-container position-relative"
-            key={image.id}
+            key={image.aWSFile}
             style={{
               width: `${image.localFile.childImageSharp.fluid.aspectRatio * 350
                 }px`,
@@ -91,9 +100,10 @@ export default function Stripes() {
             }}
           >
             {image.name &&
-              <div className="image-description p-2 bg-dark w-100">
+              <div className="image-description p-2 bg-dark">
                 <p className="text-light mb-1">{image.name}</p>
                 <p className="text-light mb-0">{image.description}</p>
+                {image.credit && <p className="text-light mb-0">Contributed By: {image.credit}</p>}
               </div>}
             <div
               className="stripe-image-background"
@@ -103,7 +113,7 @@ export default function Stripes() {
               }}
             >
               <div className="stripe-image">
-                <Img fluid={image.localFile.childImageSharp.fluid} />
+                <Img alt={image.name} fluid={image.localFile.childImageSharp.fluid} />
               </div>
             </div>
           </div>
