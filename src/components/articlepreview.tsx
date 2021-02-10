@@ -52,7 +52,7 @@ export default function ArticlePreview({ post }: Props) {
     return (
         post &&
         <article
-            className="post-list-item"
+            className="post-list-item mt-2"
             itemScope
             itemType="http://schema.org/Article"
         >

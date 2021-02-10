@@ -43,7 +43,6 @@ const BlogIndex = ({ data }: Props) => {
       <SEO title="All posts" />
       <h1>{siteTitle}</h1>
       <p>{summary}</p>
-      <h2 className="pt-3">Posts</h2>
       <ol className="ps-0" style={{ listStyle: `none` }}>
         {posts?.map(post =>
           <ArticlePreview key={post.frontmatter.title} post={post} />

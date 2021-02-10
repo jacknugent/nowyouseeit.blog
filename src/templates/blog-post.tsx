@@ -72,6 +72,7 @@ const BlogPostTemplate = ({ data }: Props) => {
           <p>{post.frontmatter.date}</p>
         </header>
         <section
+          className="mb-4"
           dangerouslySetInnerHTML={{ __html: post.html }}
           itemProp="articleBody"
         />
