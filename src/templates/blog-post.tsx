@@ -6,13 +6,26 @@ import NewsletterForm from "../components/newsletterform";
 import SEO from "../components/seo";
 
 type Props = {
+  location: {
+    pathname: string;
+  }
   data: {
+    site: {
+      siteMetadata: {
+        siteURL: string;
+      }
+    }
     allFile: {
       nodes: Array<{
         relativePath: string;
         sourceInstanceName: string;
         childImageSharp?: {
           fluid: FluidObject;
+          resize: {
+            src: string;
+            height: string;
+            width: string;
+          }
         }
       }>
     }
@@ -28,6 +41,7 @@ type Props = {
         date: string;
         description: string;
         titleImage: string;
+        previewImage: string;
       }
     }
     previous: {
@@ -49,24 +63,28 @@ type Props = {
   }
 }
 
-const BlogPostTemplate = ({ data }: Props) => {
+const BlogPostTemplate = ({ data, location }: Props) => {
   const post = data.markdownRemark
   const { previous, next } = data
 
-  const previewImage = data.allFile.nodes.find(f => "/" + f.relativePath === (post.fields.slug + post.frontmatter?.titleImage))?.childImageSharp;
+  const titleImage = data.allFile.nodes.find(f => "/" + f.relativePath === (post.fields.slug + post.frontmatter?.titleImage))?.childImageSharp;
+  const previewImage = data.allFile.nodes.find(f => "/" + f.relativePath === (post.fields.slug + post.frontmatter?.previewImage))?.childImageSharp;
+  const image = titleImage || previewImage || null;
 
   return (
     <Layout>
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
+        image={image.resize}
+        pathname={location.pathname}
       />
       <article
         className="blog-post"
         itemScope
         itemType="http://schema.org/Article"
       >
-        {previewImage && <Img fluid={previewImage.fluid} />}
+        {titleImage && <Img fluid={titleImage.fluid} />}
         <header>
           <h1 itemProp="headline" className="headline">{post.frontmatter.title}</h1>
           <p>{post.frontmatter.date}</p>
@@ -120,6 +138,11 @@ export const pageQuery = graphql`
         relativePath
         sourceInstanceName
         childImageSharp {
+          resize(width: 1200) {
+            src
+            height
+            width
+          }
           fluid(maxWidth: 600) {
               ...GatsbyImageSharpFluid
               }
@@ -138,6 +161,7 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         description
         titleImage
+        previewImage
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {

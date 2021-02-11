@@ -3,6 +3,7 @@ import { Nav, Navbar } from "react-bootstrap";
 import { graphql, Link, useStaticQuery } from "gatsby";
 import Image from "gatsby-image";
 import Patreon from "./icons/patreon";
+import Reddit from "./icons/reddit";
 import Twitter from "./icons/twitter";
 import YouTube from "./icons/youtube";
 
@@ -26,6 +27,7 @@ export default function Header() {
                     twitter
                     patreon
                     youtube
+                    reddit
                   }
                 }
               }
@@ -77,14 +79,17 @@ export default function Header() {
                     </li>
                 </Nav>
                 <div className="icons-container">
-                    <a className="icon-container" href={`https://twitter.com/${social?.twitter || ``}`} target="_blank">
+                    <a className="icon-container" href={`https://youtube.com/${social?.youtube || ``}`} target="_blank">
                         <YouTube />
                     </a>
                     <a className="icon-container" href={`https://patreon.com/${social?.patreon || ``}`} target="_blank">
                         <Patreon />
                     </a>
-                    <a className="icon-container" href={`https://youtube.com/${social?.youtube || ``}`} target="_blank">
+                    <a className="icon-container" href={`https://twitter.com/${social?.twitter || ``}`} target="_blank">
                         <Twitter />
+                    </a>
+                    <a className="icon-container" href={`https://reddit.com/r/${social?.reddit || ``}`} target="_blank">
+                        <Reddit />
                     </a>
                 </div>
             </Navbar.Collapse>

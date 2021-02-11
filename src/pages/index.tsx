@@ -9,9 +9,7 @@ type Props = {
     site: {
       siteMetadata: {
         title: string;
-        author: {
-          summary: string;
-        };
+        description: string;
       };
     };
     allMarkdownRemark: {
@@ -36,7 +34,7 @@ export type Post = {
 const BlogIndex = ({ data }: Props) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`;
   const posts = data.allMarkdownRemark.nodes;
-  const summary = data.site.siteMetadata?.author.summary;
+  const summary = data.site.siteMetadata?.description;
 
   return (
     <Layout>
@@ -59,9 +57,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
-        author {
-          summary
-        }
+        description
       }
     }
     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {

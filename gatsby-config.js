@@ -7,14 +7,15 @@ module.exports = {
     title: `Now You See It`,
     author: {
       name: `Jack Nugent`,
-      summary: `Media criticism that searches for meaning in unexpected places.`,
+      summary: `Media critic, software engineer, silly boy`,
     },
-    description: `A blog for Now You See It`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.app/`,
+    description: `Media criticism that searches for meaning in unexpected places.`,
+    siteUrl: `https://nowyouseeit.com`,
     social: {
       twitter: `jacknugent27`,
       youtube: `nowyouseeit`,
-      patreon: `nowyouseeit`
+      patreon: `nowyouseeit`,
+      reddit: `nowyouseeit`
     },
   },
   plugins: [

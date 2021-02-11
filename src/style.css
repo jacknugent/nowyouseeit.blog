@@ -339,11 +339,6 @@ input {
   height: 26px;
 }
 
-.icons-small path,
-.icons path {
-  fill: var(--color-text-light);
-}
-
 .icon-container {
   margin-left: 1.25rem;
 }
