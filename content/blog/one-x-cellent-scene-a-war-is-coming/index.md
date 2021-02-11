@@ -10,4 +10,4 @@ Check out the One X-Cellent Scene playlist! https://bit.ly/32LS9xZ
 
 When Xavier warns the President of the upcoming war in X-Men 3, that scene may seem like just an easy way to set up a sequel. But let's look at this scene more closely and see how it actually wraps up several character arcs and shows how the events of the film changed the X-Men/Human relationship.
 
-#OneXCellentScene #XMen #X2
+\#OneXCellentScene #XMen #X2

@@ -8,9 +8,6 @@ previewImage: thumbnail.jpg
 
 What's the greatest movie of all time? What makes a movie great? These are some big questions. Let's break down the elements of a "great" movie.
 
-Twitter: twitter.com/swagthug4lyfe
-Patreon: http://bit.ly/1UaO9MU
-
 Music:
 Bass Walker: http://bit.ly/20GGd62
 Room Soundtrack - Opening: http://bit.ly/1WPGVPY

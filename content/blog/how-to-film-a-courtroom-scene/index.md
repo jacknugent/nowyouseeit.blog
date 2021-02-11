@@ -8,4 +8,4 @@ previewImage: thumbnail.jpg
 
 Courtroom Scenes lead to some of the most intense and memorable moments in film, and they also provide a big challenge to the filmmaker: how do you capture all that drama in a giant courtroom with tons of people? Any film has to use various cinematic techniques very carefully to pull it off. So let's see how a few films do it.
 
-#CourtroomScenes #MyCousinVinny #AFewGoodMen
+\#CourtroomScenes #MyCousinVinny #AFewGoodMen

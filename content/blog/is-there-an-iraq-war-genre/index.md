@@ -10,4 +10,4 @@ Listen to our podcast go deeper on Iraq War Films: https://bit.ly/3ctSY1e
 
 World War Two movies are a genre by themselves. Same with Vietnam war films. But why is it much harder to point out what the Iraq War genre is? Let’s take a look at some prominent films about the American military in the Middle East and see if we can find out just what makes an Iraq War movie.
 
-#IraqWar #AmericanSniper #TheHurtLocker
+\#IraqWar #AmericanSniper #TheHurtLocker

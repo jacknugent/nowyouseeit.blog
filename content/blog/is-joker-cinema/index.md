@@ -8,4 +8,4 @@ previewImage: thumbnail.jpg
 
 Is there still room for a personal, Martin Scorsese-like film in the era of the cinematic universe? Let’s look at how Joker (2019) attempts to grapple with the dominant genre of today while paying homage to filmmakers from the Silver Age.
 
-#Joker #MartinScorsese #Cinema
+\#Joker #MartinScorsese #Cinema

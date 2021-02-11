@@ -8,4 +8,4 @@ previewImage: thumbnail.jpg
 
 The vast majority of sounds on screen are created after filming, and sound designers use this opportunity to amplify their noises. So let's take a look at how these noises end up lying to you.
 
-#SoundDesign #NowYouHearIt
+\#SoundDesign #NowYouHearIt

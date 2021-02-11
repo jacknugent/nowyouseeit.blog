@@ -10,4 +10,4 @@ When discussing groundbreaking films, we tend to talk a lot about the vision of 
 
 Learn more about female film editors at http://womenfilmeditors.princeton.edu/appendix-a/
 
-#DedeAllen #WhoGetsCredit
+\#DedeAllen #WhoGetsCredit

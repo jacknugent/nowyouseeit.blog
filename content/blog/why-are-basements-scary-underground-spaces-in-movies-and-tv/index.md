@@ -8,4 +8,4 @@ previewImage: thumbnail.jpg
 
 The Basement is the classic location for a horror movie's terrifying climax. But why? Let's take a look at what makes a basement scary, and see how it actually goes much, much deeper.
 
-To learn more, I highly recommend reading Underland: A Deep Time Journey by Robert Macfarlane #Basements #BreakingBad #Parasite
+To learn more, I highly recommend reading Underland: A Deep Time Journey by Robert Macfarlane #Basements \#BreakingBad #Parasite

@@ -8,4 +8,4 @@ previewImage: thumbnail.jpg
 
 We all appreciate the radical experimentation of 1970s Hollywood, but where did it all start? Let's take a look at one of the most influential movies of all time to see how it crafted an innovative, daring story that changed movies forever.
 
-#BonnieAndClyde #GreatestMovies #StayAtHome
+\#BonnieAndClyde #GreatestMovies #StayAtHome

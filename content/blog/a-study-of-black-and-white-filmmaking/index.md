@@ -8,4 +8,4 @@ previewImage: thumbnail.jpg
 
 For many critics, Black and White films are the gold standard. But do they have any limitations? Let's take a look at how black and white films (and symbolism) tend to leave out the most interesting part of the story.
 
-#BlackAndWhite #Watchmen #BlackLivesMatter
+\#BlackAndWhite #Watchmen #BlackLivesMatter
