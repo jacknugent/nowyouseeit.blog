@@ -97,7 +97,7 @@ const BlogPostTemplate = ({ data, location }: Props) => {
         <hr />
         <div className="pt-3 pb-3">
           <NewsletterForm>
-            Like what you See? You can get more articles and videos by joining the Now You See It newsletter. No spam, ever. Enter your email to join hundreds of others getting ad-free, algorithm-free media criticism.
+            Like what you See? You can get more articles and videos by joining the Now You See It newsletter. No spam, ever. Enter your email to join hundreds of others getting algorithm-free media criticism.
           </NewsletterForm>
         </div>
       </article>

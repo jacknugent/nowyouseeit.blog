@@ -26,6 +26,7 @@ export default function NewsletterForm({ children }) {
             <div className="w-100">
                 <form onSubmit={handleSubmit} className="newsletter-form position-relative mb-3 mt-3">
                     <input
+                        className="newsletter-input"
                         onChange={e => setEmailInput(e.target.value)}
                         value={emailInput}
                         type="text"
