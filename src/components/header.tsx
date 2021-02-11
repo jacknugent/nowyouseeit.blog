@@ -79,20 +79,20 @@ export default function Header() {
                     </li>
                 </Nav>
                 <div className="icons-container">
-                    <a className="icon-container" href={`https://youtube.com/${social?.youtube || ``}`} target="_blank">
+                    <a className="icon-container" href={`https://youtube.com/${social?.youtube || ``}`} target="_blank" rel="noopener">
                         <YouTube />
                     </a>
-                    <a className="icon-container" href={`https://patreon.com/${social?.patreon || ``}`} target="_blank">
+                    <a className="icon-container" href={`https://patreon.com/${social?.patreon || ``}`} target="_blank" rel="noopener">
                         <Patreon />
                     </a>
-                    <a className="icon-container" href={`https://twitter.com/${social?.twitter || ``}`} target="_blank">
+                    <a className="icon-container" href={`https://twitter.com/${social?.twitter || ``}`} target="_blank" rel="noopener">
                         <Twitter />
                     </a>
-                    <a className="icon-container" href={`https://reddit.com/r/${social?.reddit || ``}`} target="_blank">
+                    <a className="icon-container" href={`https://reddit.com/r/${social?.reddit || ``}`} target="_blank" rel="noopener">
                         <Reddit />
                     </a>
                 </div>
-            </Navbar.Collapse>
+            </Navbar.Collapse >
         </Navbar >
     )
 }

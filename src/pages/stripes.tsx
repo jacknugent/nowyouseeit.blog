@@ -25,7 +25,7 @@ type StaticQuery = {
     nodes: Array<{
       aWSFile: string;
       description?: string;
-      name: string;
+      name?: string;
       credit?: string;
     }>
   }
@@ -101,7 +101,7 @@ export default function Stripes() {
       </div>
       <div className="stripes-container">
         {s3sheetCombined
-          .filter(image => image.name.toLowerCase().includes(stripeSearch.toLowerCase()))
+          .filter(image => (image.name?.toLowerCase() || "").includes(stripeSearch.toLowerCase()))
           .map(image => (
             <div
               className="stripe-container position-relative"
