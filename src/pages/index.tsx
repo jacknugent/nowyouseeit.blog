@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { graphql } from "gatsby";
 import ArticlePreview from "../components/articlepreview";
 import Layout from "../components/layout";
@@ -32,9 +32,28 @@ export type Post = {
 }
 
 const BlogIndex = ({ data }: Props) => {
+  const [postCount, setPostCount] = useState(10);
+
+  const infiniteScroll = () => {
+    if (window !== undefined) {
+      // logic from https://stackoverflow.com/a/22394544
+      var scrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
+      var scrollHeight = ((document.documentElement && document.documentElement.scrollHeight) || document.body.scrollHeight) || document.body.scrollHeight;
+      var almostScrolledToBottom = (scrollTop + window.innerHeight) >= scrollHeight - 300;
+      if (almostScrolledToBottom)
+        setPostCount(postCount + 10)
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener("scroll", infiniteScroll);
+    return () => window.removeEventListener("scroll", infiniteScroll);
+  });
+
   const siteTitle = data.site.siteMetadata?.title || `Title`;
-  const posts = data.allMarkdownRemark.nodes;
   const summary = data.site.siteMetadata?.description;
+  const posts = data.allMarkdownRemark.nodes;
+  const postsView = posts.slice(0, postCount);
 
   return (
     <Layout>
@@ -42,7 +61,7 @@ const BlogIndex = ({ data }: Props) => {
       <h1>{siteTitle}</h1>
       <p>{summary}</p>
       <ol className="ps-0" style={{ listStyle: `none` }}>
-        {posts?.map(post =>
+        {postsView?.map(post =>
           <ArticlePreview key={post.frontmatter.title} post={post} />
         )}
       </ol>

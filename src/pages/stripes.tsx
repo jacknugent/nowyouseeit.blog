@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import Img, { FluidObject } from "gatsby-image";
 import Layout from "../components/layout";
@@ -23,6 +23,7 @@ type StaticQuery = {
   }
   allGoogleStripesSheet: {
     nodes: Array<{
+      id: string;
       aWSFile: string;
       description?: string;
       name?: string;
@@ -48,6 +49,7 @@ export default function Stripes() {
       }
       allGoogleStripesSheet {
         nodes {
+          id
           aWSFile
           description
           name
@@ -57,6 +59,23 @@ export default function Stripes() {
     }
   `)
   const [stripeSearch, setStripeSearch] = useState("");
+  const [imageCount, setImageCount] = useState(40);
+
+  const infiniteScroll = () => {
+    if (window !== undefined) {
+      // logic from https://stackoverflow.com/a/22394544
+      var scrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
+      var scrollHeight = ((document.documentElement && document.documentElement.scrollHeight) || document.body.scrollHeight) || document.body.scrollHeight;
+      var almostScrolledToBottom = (scrollTop + window.innerHeight) >= scrollHeight - 300;
+      if (almostScrolledToBottom)
+        setImageCount(imageCount + 40)
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener("scroll", infiniteScroll);
+    return () => window.removeEventListener("scroll", infiniteScroll);
+  });
 
   const s3images = data.allS3Object.nodes
   const sheetRows = data.allGoogleStripesSheet.nodes
@@ -76,6 +95,8 @@ export default function Stripes() {
         ...s3SheetMatch,
       }
     })
+
+  const s3SheetCombinedView = s3sheetCombined.slice(0, imageCount);
 
   return (
     <Layout fullLayout={true}>
@@ -100,12 +121,12 @@ export default function Stripes() {
           name="stripeSearch" />
       </div>
       <div className="stripes-container">
-        {s3sheetCombined
-          .filter(image => (image.name?.toLowerCase() || "").includes(stripeSearch.toLowerCase()))
+        {s3SheetCombinedView
+          .filter(image => image.id && (image.name?.toLowerCase() || "").includes(stripeSearch.toLowerCase()))
           .map(image => (
             <div
               className="stripe-container position-relative"
-              key={image.aWSFile}
+              key={image.id}
               style={{
                 width: `${image.localFile.childImageSharp.fluid.aspectRatio * 350
                   }px`,
