@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { graphql, useStaticQuery } from "gatsby";
 import Img, { FluidObject } from "gatsby-image";
 import Layout from "../components/layout";
 import NewsletterForm from "../components/newsletterform";
@@ -33,31 +32,31 @@ type StaticQuery = {
 }
 
 export default function Stripes() {
-  const data = useStaticQuery<StaticQuery>(graphql`
-    query StripesQuery {
-      allS3Object {
-        nodes {
-          localFile {
-            childImageSharp {
-              fluid(maxWidth: 700) {
-                ...GatsbyImageSharpFluid
-              }
-            }
-            name
-          }
-        }
-      }
-      allGoogleStripesSheet {
-        nodes {
-          id
-          aWSFile
-          description
-          name
-          credit
-        }
-      }
-    }
-  `)
+  // const data = useStaticQuery<StaticQuery>(graphql`
+  //   query StripesQuery {
+  //     allS3Object {
+  //       nodes {
+  //         localFile {
+  //           childImageSharp {
+  //             fluid(maxWidth: 700) {
+  //               ...GatsbyImageSharpFluid
+  //             }
+  //           }
+  //           name
+  //         }
+  //       }
+  //     }
+  //     allGoogleStripesSheet {
+  //       nodes {
+  //         id
+  //         aWSFile
+  //         description
+  //         name
+  //         credit
+  //       }
+  //     }
+  //   }
+  // `)
   const [stripeSearch, setStripeSearch] = useState("");
   const [imageCount, setImageCount] = useState(40);
 
@@ -77,26 +76,26 @@ export default function Stripes() {
     return () => window.removeEventListener("scroll", infiniteScroll);
   });
 
-  const s3images = data.allS3Object.nodes
-  const sheetRows = data.allGoogleStripesSheet.nodes
+  // const s3images = data.allS3Object.nodes
+  // const sheetRows = data.allGoogleStripesSheet.nodes
 
-  const s3sheetCombined = s3images
-    .filter(i => i.localFile != null)
-    .map(i => {
-      const s3SheetMatch = sheetRows.find(
-        r => i.localFile.name === r.aWSFile
-      )
+  // const s3sheetCombined = s3images
+  //   .filter(i => i.localFile != null)
+  //   .map(i => {
+  //     const s3SheetMatch = sheetRows.find(
+  //       r => i.localFile.name === r.aWSFile
+  //     )
 
-      if (!s3SheetMatch)
-        console.error(`Failed to find row in Google Sheet with name ${i.localFile.name}`)
+  //     if (!s3SheetMatch)
+  //       console.error(`Failed to find row in Google Sheet with name ${i.localFile.name}`)
 
-      return {
-        ...i,
-        ...s3SheetMatch,
-      }
-    })
+  //     return {
+  //       ...i,
+  //       ...s3SheetMatch,
+  //     }
+  //   })
 
-  const s3SheetCombinedView = s3sheetCombined.slice(0, imageCount);
+  // const s3SheetCombinedView = s3sheetCombined.slice(0, imageCount);
 
   return (
     <Layout fullLayout={true}>
@@ -121,7 +120,7 @@ export default function Stripes() {
           name="stripeSearch" />
       </div>
       <div className="stripes-container">
-        {s3SheetCombinedView
+        {[]
           .filter(image => image.id && (image.name?.toLowerCase() || "").includes(stripeSearch.toLowerCase()))
           .map(image => (
             <div

@@ -49,6 +49,7 @@ module.exports = {
         ],
       },
     },
+    `gatsby-transformer-yaml`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -61,6 +62,13 @@ module.exports = {
       options: {
         path: `${__dirname}/content/assets`,
         name: `assets`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/stripe-images`,
+        name: `stripeImages`,
       },
     },
     {
@@ -83,25 +91,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
-    {
-      resolve: `@robinmetral/gatsby-source-s3`,
-      options: {
-        aws: {
-          accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-          secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-          region: process.env.AWS_REGION,
-        },
-        buckets: ["nowyouseeitstripes"],
-        expiration: 120,
-      },
-    },
-    {
-      resolve: "gatsby-source-google-spreadsheets",
-      options: {
-        spreadsheetId: "1GDXpnoc8ywPVlpN2qzO1s6Qelv8U4qWtnjA5AluDNpg",
-        apiKey: process.env.GOOGLE_SHEETS_API,
-      },
-    },
     {
       resolve: "gatsby-plugin-mailchimp",
       options: {
