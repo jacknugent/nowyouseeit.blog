@@ -67,7 +67,14 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/stripe-images`,
+        path: `${__dirname}/content/stripe-gallery`,
+        name: `stripeImageDescriptions`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/stripe-gallery/stripe-images`,
         name: `stripeImages`,
       },
     },
