@@ -9,8 +9,8 @@ import "./src/style.css";
 // stripes.js css
 import "./src/stripes.css";
 
-// Highlighting for code blocks
-import "prismjs/themes/prism.css";
+// navbar.css
+import "./src/navbar.css";
 
-// bootstrap
-import "bootstrap/dist/css/bootstrap.min.css";
+// imitation bootstrap
+import "./src/bootstrap.css";

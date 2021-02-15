@@ -1,0 +1,120 @@
+.navbar-container {
+    max-width: var(--maxWidth-4xl);
+    display: flex;
+    position: relative;
+    margin: auto;
+    padding-top: 1rem;
+    padding-bottom: var(--spacing-2);
+    justify-content: space-between;
+    width: 100%;
+    background-color: var(--background-color);
+}
+
+.navbar-nav {
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    background-color: var(--background-color);
+    display: flex;
+    flex-direction: column;
+    -webkit-transition: -webkit-transform .5s ease;
+    -moz-transition: -moz-transform .5s ease;
+    -o-transition: -o-transform .5s ease;
+    transition: transform .5s ease;
+}
+
+.navbar-nav.active {
+    transform: translateX(0);
+}
+
+.navbar-nav.inactive {
+    transform: translateX(calc(100% + 1rem));
+}
+
+.navbar-nav.hidden {
+    opacity: 0;
+    transform: translateX(calc(100% + 1rem));
+}
+
+.nav-item {
+    list-style-type: none;
+}
+
+.nav-link {
+    padding: .5rem;
+    color: rgba(0,0,0,.55);
+    text-decoration: none;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+    display: block;
+}
+
+.nav-link.active,
+.nav-link:hover {
+    color: rgba(0,0,0,.7);
+}
+
+.hamburger {
+    display: flex;
+    align-items: center;
+    background: transparent;
+    border: none;
+}
+
+.hamburger:hover {
+    cursor: pointer;
+}
+
+.hamburger svg {
+    fill: var(--color-text-light);
+}
+
+/* Icons */
+
+.icons {
+    height: 30px;
+}
+
+.icons-small {
+    height: 26px;
+}
+
+.icons-container {
+    margin-left: 0;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    padding-top: 1rem;
+}
+
+@media (min-width: 700px) {
+    .navbar-nav {
+        opacity: 1 !important;
+        position: relative;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+        transform: translateX(0) !important;
+        transition: none !important;
+        visibility: visible;
+        height: 100%;
+    }
+
+    .navbar-links {
+        display: flex;
+    }
+
+    .icons-container {
+        justify-content: end;
+    }
+
+    .icon-container {
+        margin-left: 1.25rem;
+    }
+
+    .hamburger {
+        display: none;
+    }
+}

@@ -1,3 +1,8 @@
+.stripes-intro {
+  display: flex;
+  justify-content: center;
+}
+
 .stripes-container {
   display: flex;
   flex-wrap: wrap;
@@ -40,4 +45,28 @@
   max-height: 20%;
   overflow-y: scroll;
   scrollbar-color: grey var(--bg-dark);
+}
+
+.stripe-search-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.stripe-search-input {
+  border: 1px solid #212529;
+  width: 25%;
+}
+
+@media(max-width: 700px) {
+  .stripe-search-input {
+    width: 50%
+  }
+}
+
+.bg-dark {
+  background-color: var(--bg-dark);
+}
+
+.text-light {
+  color: var(--color-accent);
 }

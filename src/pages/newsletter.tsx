@@ -27,7 +27,7 @@ export default function Newsletter({ data }: Props) {
   return (
     <Layout>
       <SEO title="Newsletter" />
-      <div className="mt-5">
+      <div className="mt-5 mb-5">
         <NewsletterForm>
           Get access to Now You See It articles and videos by joining our newsletter. No spam, ever. Enter your email to join hundreds of others getting algorithm-free media criticism.
         </NewsletterForm>

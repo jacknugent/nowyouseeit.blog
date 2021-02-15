@@ -1,5 +1,4 @@
-import React from "react";
-import { Nav, Navbar } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
 import { graphql, Link, useStaticQuery } from "gatsby";
 import Image from "gatsby-image";
 import Patreon from "./icons/patreon";
@@ -7,7 +6,7 @@ import Reddit from "./icons/reddit";
 import Twitter from "./icons/twitter";
 import YouTube from "./icons/youtube";
 
-export default function Header() {
+export default function NavBar() {
     const data = useStaticQuery(graphql`
         query HeaderQuery {
             avatar: file(absolutePath: { regex: "/profile-pic.png/" }) {
@@ -32,27 +31,50 @@ export default function Header() {
                 }
               }
         }`)
+    const [isClicked, setIsClicked] = useState<boolean | null>(null);
+
+    const handleClick = () => {
+        document.body.style.overflow = isClicked ? "scroll" : "hidden";
+        setIsClicked(!isClicked);
+    }
+
+    useEffect(() => {
+        window.addEventListener("resize", () => setIsClicked(null))
+        return () => window.removeEventListener("resize", () => setIsClicked(null));
+    }, [])
 
     const avatar = data?.avatar?.childImageSharp?.fixed
     const author = data.site.siteMetadata?.author
     const social = data.site.siteMetadata?.social
 
     return (
-        <Navbar className="header-container w-100 d-flex m-auto pt-3" bg="none" expand="lg">
+        <div className="navbar-container">
             <Link to="/">
                 {avatar && (
                     <Image
                         fixed={avatar}
                         alt={author?.name || ``}
-                        className="bio-avatar"
+                        className="bio-avatar mr-4"
                         imgStyle={{
                             borderRadius: `50%`,
                         }}
                     />
                 )}</Link>
-            <Navbar.Toggle className="border-0" aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav" className="justify-content-between">
-                <Nav>
+            <button onClick={handleClick} className="hamburger">
+                <svg viewBox="0 0 100 80" width="30" height="30">
+                    <rect width="90" height="7" rx="8"></rect>
+                    <rect y="30" width="90" height="7" rx="8"></rect>
+                    <rect y="60" width="90" height="7" rx="8"></rect>
+                </svg>
+            </button>
+            <div
+                className={`navbar-nav
+                    ${isClicked === null
+                        ? "hidden"
+                        : isClicked
+                            ? "active"
+                            : "inactive"}`}>
+                <div className="navbar-links">
                     <li className="nav-item">
                         <Link
                             className="nav-link"
@@ -77,7 +99,7 @@ export default function Header() {
                             Stripes
                         </Link>
                     </li>
-                </Nav>
+                </div>
                 <div className="icons-container">
                     <a className="icon-container" href={`https://youtube.com/${social?.youtube || ``}`} target="_blank" rel="noopener">
                         <YouTube />
@@ -92,7 +114,7 @@ export default function Header() {
                         <Reddit />
                     </a>
                 </div>
-            </Navbar.Collapse >
-        </Navbar >
+            </div>
+        </div>
     )
 }

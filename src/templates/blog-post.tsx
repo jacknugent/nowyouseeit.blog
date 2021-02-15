@@ -102,9 +102,9 @@ const BlogPostTemplate = ({ data, location }: Props) => {
         </div>
       </article>
       <hr />
-      <nav className="blog-post-nav">
+      <nav className="blog-post-nav mt-5 mb-5">
         <h4>See More</h4>
-        <ul className="d-flex flex-wrap justify-content-between list-unstyled p-0">
+        <ul>
           <li>
             {previous && (
               <Link to={previous.fields.slug} rel="prev">
@@ -112,7 +112,7 @@ const BlogPostTemplate = ({ data, location }: Props) => {
               </Link>
             )}
           </li>
-          <li>
+          <li className={next && "mt-3"}>
             {next && (
               <Link to={next.fields.slug} rel="next">
                 {next.frontmatter.title} →

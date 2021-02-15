@@ -89,7 +89,7 @@ export default function Stripes() {
   return (
     <Layout fullLayout={true}>
       <SEO title="Stripes Gallery" />
-      <div className="d-flex justify-content-center">
+      <div className="stripes-intro justify-content-center">
         <div className="max-width-wrapper pb-3">
           <h1>Stripes Gallery</h1>
           <p>Learn more <a href="https://www.youtube.com/watch?v=Y1U4YkNkoG0">here</a>, or <a href="https://forms.gle/ZdmkHRQkJkmd7ARc8" target="_blank">submit your own</a>!</p>
@@ -98,10 +98,10 @@ export default function Stripes() {
           </NewsletterForm>
         </div>
       </div>
-      <div className="d-flex flex-column w-25 mb-2">
+      <div className="stripe-search-container mb-2">
         <label htmlFor="stripeSearch">Stripe Search</label>
         <input
-          className="border border-dark p-1"
+          className="stripe-search-input p-1"
           value={stripeSearch}
           onChange={e => setStripeSearch(e.currentTarget.value)}
           type="text"
@@ -136,7 +136,6 @@ export default function Stripes() {
                   }}
                 >
                   <div className="stripe-image">
-                    <div className="d-none">{image.fileName}</div>
                     <Img alt={image.title} fluid={image.childImageSharp.fluid} />
                   </div>
                 </div>

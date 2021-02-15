@@ -35,7 +35,7 @@ export default function NewsletterForm({ children }) {
                     <button
                         type="submit"
                         value="Submit"
-                        className="newsletter-button ms-2">
+                        className="newsletter-button ml-2">
                         Try the free newsletter
                     </button>
                     {mailChimpMessage &&
