@@ -296,7 +296,7 @@ a:focus {
   overflow: hidden;
 }
 
-@media (max-width: 576px) {
+@media (max-width: 700px) {
   .global-wrapper {
     padding: 0 var(--spacing-2) var(--spacing-2) var(--spacing-2);
   }
