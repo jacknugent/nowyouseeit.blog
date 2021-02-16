@@ -77,6 +77,7 @@ export default function NavBar() {
                 <div className="navbar-links">
                     <li className="nav-item">
                         <Link
+                            onClick={() => document.body.style.overflow = "scroll"}
                             className="nav-link"
                             to="/"
                             activeClassName="active">
@@ -85,6 +86,7 @@ export default function NavBar() {
                     </li>
                     <li className="nav-item">
                         <Link
+                            onClick={() => document.body.style.overflow = "scroll"}
                             className="nav-link"
                             to="/newsletter"
                             activeClassName="active">
@@ -93,6 +95,7 @@ export default function NavBar() {
                     </li>
                     <li className="nav-item">
                         <Link
+                            onClick={() => document.body.style.overflow = "scroll"}
                             className="nav-link"
                             to="/stripes"
                             activeClassName="active">

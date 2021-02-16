@@ -2,6 +2,38 @@
     width: 100% !important;
 }
 
+.mt-0 {
+    margin-top: 0 !important;
+}
+
+.ml-0 {
+    margin-left: 0 !important;
+}
+
+.mb-0 {
+    margin-bottom: 0 !important;
+}
+
+.mr-0 {
+    margin-right: 0 !important;
+}
+
+.mt-1 {
+    margin-top: var(--spacing-1) !important;
+}
+
+.ml-1 {
+    margin-left: var(--spacing-1) !important;
+}
+
+.mb-1 {
+    margin-bottom: var(--spacing-1) !important;
+}
+
+.mr-1 {
+    margin-right: var(--spacing-1) !important;
+}
+
 .mt-2 {
     margin-top: var(--spacing-2) !important;
 }
