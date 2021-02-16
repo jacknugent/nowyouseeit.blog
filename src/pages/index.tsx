@@ -57,7 +57,7 @@ const BlogIndex = ({ data }: Props) => {
 
   return (
     <Layout>
-      <SEO title="All posts" />
+      <SEO title="Posts" />
       <h1>{siteTitle}</h1>
       <p>{summary}</p>
       <ol className="ps-0" style={{ listStyle: `none` }}>
