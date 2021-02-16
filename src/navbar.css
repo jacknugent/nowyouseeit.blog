@@ -101,6 +101,7 @@
     align-items: center;
     width: 100%;
     padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 @media (min-width: 700px) {
@@ -119,6 +120,7 @@
 
     .navbar-links {
         flex-direction: row;
+        margin: auto;
     }
 
     .nav-link {
@@ -127,6 +129,7 @@
 
     .icons-container {
         justify-content: end;
+        padding-bottom: 0;
     }
 
     .icon-container {
