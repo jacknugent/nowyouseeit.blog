@@ -8,6 +8,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import { graphql, useStaticQuery } from "gatsby";
+import { FixedObject } from "gatsby-image";
 
 type Props = {
   title: string;
@@ -22,6 +23,11 @@ type Props = {
 }
 
 type StaticQueryProps = {
+  avatar: {
+    childImageSharp: {
+      fixed: FixedObject
+    }
+  }
   site: {
     siteMetadata: {
       title: string;
@@ -39,9 +45,16 @@ type StaticQueryProps = {
 }
 
 const SEO = ({ description, meta, image: metaImage, title, pathname }: Props) => {
-  const { site } = useStaticQuery<StaticQueryProps>(
+  const { avatar, site } = useStaticQuery<StaticQueryProps>(
     graphql`
       query {
+        avatar: file(absolutePath: { regex: "/profile-pic.png/" }) {
+          childImageSharp {
+              fixed(width: 800, height: 800, quality: 100) {
+                  ...GatsbyImageSharpFixed
+              }
+          }
+        }
         site {
           siteMetadata {
             title
@@ -62,9 +75,7 @@ const SEO = ({ description, meta, image: metaImage, title, pathname }: Props) =>
 
   const metaDescription = description || site.siteMetadata.description;
 
-  const image = metaImage && metaImage.src
-    ? `${site.siteMetadata.siteUrl}${metaImage.src}`
-    : null
+  const image = metaImage || avatar.childImageSharp.fixed;
 
   const canonical = pathname
     ? `${site.siteMetadata.siteUrl}${pathname}`
@@ -124,32 +135,24 @@ const SEO = ({ description, meta, image: metaImage, title, pathname }: Props) =>
         },
       ]
         .concat(
-          metaImage
-            ? [
-              {
-                property: "og:image",
-                content: image,
-              },
-              {
-                property: "og:image:width",
-                content: metaImage.width,
-              },
-              {
-                property: "og:image:height",
-                content: metaImage.height,
-              },
-              {
-                name: "twitter:card",
-                content: "summary_large_image",
-              },
-            ]
-            : [
-              {
-                name: "twitter:card",
-                content: "summary",
-              },
-            ]
-        )
+          [
+            {
+              property: "og:image",
+              content: `${site.siteMetadata.siteUrl}${image.src}`,
+            },
+            {
+              property: "og:image:width",
+              content: image.width.toString(),
+            },
+            {
+              property: "og:image:height",
+              content: image.height.toString(),
+            },
+            {
+              name: "twitter:card",
+              content: "summary_large_image",
+            },
+          ])
         .concat(meta || [])}
     />
   )
