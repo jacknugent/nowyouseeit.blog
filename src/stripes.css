@@ -8,9 +8,8 @@
   flex-wrap: wrap;
 }
 
-.stripe-container:hover > .image-description {
-  opacity: 1;
-  z-index: 1;
+.stripe-container:hover {
+  cursor: pointer;
 }
 
 .stripes-container::after {
@@ -22,6 +21,8 @@
   margin: 2px;
   background-color: transparent;
   position: relative;
+  border: none;
+  padding: 0;
 }
 
 .stripe-image-background {
@@ -45,6 +46,12 @@
   max-height: 20%;
   overflow-y: scroll;
   scrollbar-color: grey var(--bg-dark);
+  text-align: left;
+}
+
+.image-description.show {
+  opacity: 1;
+  z-index: 1;
 }
 
 .stripe-search-container {

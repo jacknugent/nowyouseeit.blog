@@ -5,7 +5,7 @@ previewImage: thumbnail.jpg
 youtubeLink: https://www.youtube.com/embed/Y1U4YkNkoG0
 ---
 
-Stripe blog: https://www.nowyouseeit.blog/stripes
+Stripe blog: https://www.nowyouseeit.com/stripes
 
 Submit a movie stripe: https://forms.gle/ZdmkHRQkJkmd7ARc8
 
