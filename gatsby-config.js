@@ -6,7 +6,7 @@ module.exports = {
       summary: `Media critic, software engineer, silly boy`,
     },
     description: `Media criticism that searches for meaning in unexpected places.`,
-    siteUrl: `https://nowyouseeit.com`,
+    siteUrl: `https://www.nowyouseeit.com`,
     social: {
       twitter: `jacknugent27`,
       youtube: `nowyouseeit`,
