@@ -87,14 +87,16 @@ const BlogPostTemplate = ({ data, location }: Props) => {
       >
         {titleImage && <Img className="mt-2 mb-2 large-layout" fluid={titleImage.fluid} />}
         {post.frontmatter.youtubeLink &&
-          <div className="youtube-iframe mt-2 mb-2">
-            <iframe
-              width="1920"
-              height="1080"
-              src={post.frontmatter.youtubeLink}
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen />
+          <div className="large-layout">
+            <div className="youtube-iframe mt-2 mb-2">
+              <iframe
+                width="1920"
+                height="1080"
+                src={post.frontmatter.youtubeLink}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen />
+            </div>
           </div>}
         <header>
           <h1 itemProp="headline" className="headline medium-layout">{post.frontmatter.title}</h1>
