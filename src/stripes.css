@@ -49,6 +49,12 @@
   text-align: left;
 }
 
+@media(max-width: 700px) {
+  .image-description {
+    max-height: 30%;
+  }
+}
+
 .image-description.show {
   opacity: 1;
   z-index: 1;
