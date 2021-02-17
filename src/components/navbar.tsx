@@ -3,6 +3,7 @@ import { graphql, Link, useStaticQuery } from "gatsby";
 import Image from "gatsby-image";
 import Patreon from "./icons/patreon";
 import Reddit from "./icons/reddit";
+import Rss from "./icons/rss";
 import Twitter from "./icons/twitter";
 import YouTube from "./icons/youtube";
 
@@ -22,6 +23,7 @@ export default function NavBar() {
                     name
                     summary
                   }
+                  siteUrl
                   social {
                     twitter
                     patreon
@@ -115,6 +117,9 @@ export default function NavBar() {
                     </a>
                     <a className="icon-container" href={`https://reddit.com/r/${social?.reddit || ``}`} target="_blank" rel="noopener">
                         <Reddit />
+                    </a>
+                    <a className="icon-container" href={`${data.site.siteMetadata?.siteUrl}/rss.xml`} target="_blank" rel="noopener">
+                        <Rss />
                     </a>
                 </div>
             </div>
