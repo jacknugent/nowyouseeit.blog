@@ -51,7 +51,7 @@
 
 @media(max-width: 700px) {
   .image-description {
-    max-height: 30%;
+    max-height: 25%;
   }
 }
 
