@@ -2,9 +2,8 @@
 title: "The Meaning of Chess in Movies"
 date: 2017-03-19T14:46:22Z
 previewImage: thumbnail.jpg
+youtubeLink: https://www.youtube.com/embed/pkXgSNm6Fes
 ---
-
-<iframe width="1920" height="1080" src="https://www.youtube.com/embed/pkXgSNm6Fes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Chess is everywhere in movies, and it can mean a lot more than you may think. Let's take a look at chess and see what this ancient game holds for us in cinema.
 

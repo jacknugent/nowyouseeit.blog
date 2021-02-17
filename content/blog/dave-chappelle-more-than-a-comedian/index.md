@@ -2,9 +2,8 @@
 title: "Dave Chappelle: More Than A Comedian"
 date: 2020-10-27T02:32:41Z
 previewImage: thumbnail.jpg
+youtubeLink: https://www.youtube.com/embed/-VpK3gkjQ6A
 ---
-
-<iframe width="1920" height="1080" src="https://www.youtube.com/embed/-VpK3gkjQ6A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 We all know that Dave Chappelle is a legend, and perhaps the greatest comedian of all time. But is that just because of the jokes he tells, or something more? Let's take a look past the jokes and see what makes Dave Chappelle so iconic.
 

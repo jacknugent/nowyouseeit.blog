@@ -2,9 +2,8 @@
 title: "The Meaning of Red in Movies"
 date: 2018-12-28T02:41:29Z
 previewImage: thumbnail.jpg
+youtubeLink: https://www.youtube.com/embed/3Tg5iwK9dKQ
 ---
-
-<iframe width="1920" height="1080" src="https://www.youtube.com/embed/3Tg5iwK9dKQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Alternate Title: Red: Fire and Blood, Life and Death
 

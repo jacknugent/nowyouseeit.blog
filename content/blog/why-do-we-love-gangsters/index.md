@@ -2,9 +2,8 @@
 title: "Why Do We Love Gangsters?"
 date: 2016-12-12T23:25:50Z
 previewImage: thumbnail.jpg
+youtubeLink: https://www.youtube.com/embed/xs6Y3oZwNf0
 ---
-
-<iframe width="1920" height="1080" src="https://www.youtube.com/embed/xs6Y3oZwNf0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Let's explore the American Gangster genre and see how the gangster appeals to universal human desires.
 

@@ -2,9 +2,8 @@
 title: "Which Way Did He Go? Lateral Character Movement in Film"
 date: 2016-02-15T04:42:29Z
 previewImage: thumbnail.jpg
+youtubeLink: https://www.youtube.com/embed/Ys8-a0yD-MM
 ---
-
-<iframe width="1920" height="1080" src="https://www.youtube.com/embed/Ys8-a0yD-MM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 What's the difference between moving left to right or right to left? The difference is everything. Let's talk about movement, and why it means more than you'd think.
 

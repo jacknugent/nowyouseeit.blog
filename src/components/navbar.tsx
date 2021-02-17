@@ -36,7 +36,7 @@ export default function NavBar() {
     const [isClicked, setIsClicked] = useState<boolean | null>(null);
 
     const handleClick = () => {
-        document.body.style.overflow = isClicked ? "scroll" : "hidden";
+        document.body.style.overflow = isClicked ? "auto" : "hidden";
         setIsClicked(!isClicked);
     }
 
@@ -79,7 +79,7 @@ export default function NavBar() {
                 <div className="navbar-links">
                     <li className="nav-item">
                         <Link
-                            onClick={() => document.body.style.overflow = "scroll"}
+                            onClick={() => document.body.style.overflow = "auto"}
                             className="nav-link"
                             to="/"
                             activeClassName="active">
@@ -88,7 +88,7 @@ export default function NavBar() {
                     </li>
                     <li className="nav-item">
                         <Link
-                            onClick={() => document.body.style.overflow = "scroll"}
+                            onClick={() => document.body.style.overflow = "auto"}
                             className="nav-link"
                             to="/newsletter"
                             activeClassName="active">
@@ -97,7 +97,7 @@ export default function NavBar() {
                     </li>
                     <li className="nav-item">
                         <Link
-                            onClick={() => document.body.style.overflow = "scroll"}
+                            onClick={() => document.body.style.overflow = "auto"}
                             className="nav-link"
                             to="/stripes"
                             activeClassName="active">

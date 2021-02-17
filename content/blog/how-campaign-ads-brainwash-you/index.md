@@ -2,9 +2,8 @@
 title: "How Campaign Ads Brainwash You"
 date: 2016-06-21T19:59:37Z
 previewImage: thumbnail.jpg
+youtubeLink: https://www.youtube.com/embed/QaBLRwTU7qY
 ---
-
-<iframe width="1920" height="1080" src="https://www.youtube.com/embed/QaBLRwTU7qY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Let's take a film perspective on political campaign ads and see how they brainwash you.
 

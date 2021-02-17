@@ -2,9 +2,8 @@
 title: "Milk in Movies: Why Do Characters Drink It?"
 date: 2017-01-03T17:00:00Z
 previewImage: thumbnail.jpg
+youtubeLink: https://www.youtube.com/embed/iKDtmV5xSv0
 ---
-
-<iframe width="1920" height="1080" src="https://www.youtube.com/embed/iKDtmV5xSv0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 What people consume in a movie says a lot about their character, but what does it mean when they drink milk? Let's take a look.
 

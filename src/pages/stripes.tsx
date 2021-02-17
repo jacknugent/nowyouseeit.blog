@@ -87,7 +87,7 @@ export default function Stripes() {
     .slice(0, imageCount);
 
   return (
-    <Layout fullLayout={true}>
+    <Layout>
       <SEO title="Stripes Gallery" />
       <div className="stripes-intro justify-content-center">
         <div className="max-width-wrapper pb-3">

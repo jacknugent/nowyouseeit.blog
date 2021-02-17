@@ -2,9 +2,8 @@
 title: "How To Hack Like Mark Zuckerberg"
 date: 2020-03-06T22:07:18Z
 previewImage: thumbnail.jpg
+youtubeLink: https://www.youtube.com/embed/67WrchN0yvc
 ---
-
-<iframe width="1920" height="1080" src="https://www.youtube.com/embed/67WrchN0yvc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 YouTubeMash: https://jacknugent.io/youtube-mash
 

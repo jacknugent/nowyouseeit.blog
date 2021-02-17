@@ -2,9 +2,8 @@
 title: "Improvisation In Film"
 date: 2015-12-24T04:37:45Z
 previewImage: thumbnail.jpg
+youtubeLink: https://www.youtube.com/embed/mQgZjRf-xmY
 ---
-
-<iframe width="1920" height="1080" src="https://www.youtube.com/embed/mQgZjRf-xmY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Why do actors improvise in film? What makes for good improv? Let's look at different improvised scenes and see how films utilize improvisation to provide laughs, tears, or realism.
 

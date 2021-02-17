@@ -2,9 +2,8 @@
 title: "One X-Cellent Scene - A War Is Coming"
 date: 2020-07-22T23:13:37Z
 previewImage: thumbnail.jpg
+youtubeLink: https://www.youtube.com/embed/nZQC0TdscgE
 ---
-
-<iframe width="1920" height="1080" src="https://www.youtube.com/embed/nZQC0TdscgE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Check out the One X-Cellent Scene playlist! https://bit.ly/32LS9xZ
 

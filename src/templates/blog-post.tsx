@@ -42,6 +42,7 @@ type Props = {
         description: string;
         titleImage: string;
         previewImage: string;
+        youtubeLink: string;
       }
     }
     previous: {
@@ -84,25 +85,35 @@ const BlogPostTemplate = ({ data, location }: Props) => {
         itemScope
         itemType="http://schema.org/Article"
       >
-        {titleImage && <Img fluid={titleImage.fluid} />}
+        {titleImage && <Img className="mt-2 mb-2 large-layout" fluid={titleImage.fluid} />}
+        {post.frontmatter.youtubeLink &&
+          <div className="youtube-iframe mt-2 mb-2">
+            <iframe
+              width="1920"
+              height="1080"
+              src={post.frontmatter.youtubeLink}
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen />
+          </div>}
         <header>
-          <h1 itemProp="headline" className="headline">{post.frontmatter.title}</h1>
-          <p>{post.frontmatter.date}</p>
+          <h1 itemProp="headline" className="headline medium-layout">{post.frontmatter.title}</h1>
+          <p className="medium-layout">{post.frontmatter.date}</p>
         </header>
         <section
-          className="mb-4"
+          className="mb-4 medium-layout"
           dangerouslySetInnerHTML={{ __html: post.html }}
           itemProp="articleBody"
         />
         <hr />
-        <div className="pt-3 pb-3">
+        <div className="pt-3 pb-3 medium-layout">
           <NewsletterForm>
             Like what you See? You can get more articles and videos by joining the Now You See It newsletter. No spam, ever. Enter your email to join hundreds of others getting algorithm-free media criticism.
           </NewsletterForm>
         </div>
       </article>
       <hr />
-      <nav className="blog-post-nav mt-5 mb-5">
+      <nav className="blog-post-nav mt-5 mb-5 medium-layout">
         <h4>See More</h4>
         <ul>
           <li>
@@ -143,7 +154,7 @@ export const pageQuery = graphql`
             height
             width
           }
-          fluid(maxWidth: 600) {
+          fluid(maxWidth: 896) {
               ...GatsbyImageSharpFluid
               }
           }
@@ -162,6 +173,7 @@ export const pageQuery = graphql`
         description
         titleImage
         previewImage
+        youtubeLink
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {

@@ -2,9 +2,8 @@
 title: "Opening Shots Tell Us Everything"
 date: 2015-08-01T00:17:53Z
 previewImage: thumbnail.jpg
+youtubeLink: https://www.youtube.com/embed/CZhFtd1QZWc
 ---
-
-<iframe width="1920" height="1080" src="https://www.youtube.com/embed/CZhFtd1QZWc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Opening shots are underrated. I can almost guarantee that your favorite film has an opening shot that gives huge insight into the film's themes, character conflicts, or plot points. Let's look at four in-depth examples to see just how revealing opening shots are.
 

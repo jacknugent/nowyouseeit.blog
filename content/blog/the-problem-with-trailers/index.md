@@ -2,9 +2,8 @@
 title: "The Problem with Trailers"
 date: 2016-01-12T03:10:39Z
 previewImage: thumbnail.jpg
+youtubeLink: https://www.youtube.com/embed/lzJgrmYQAao
 ---
-
-<iframe width="1920" height="1080" src="https://www.youtube.com/embed/lzJgrmYQAao" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Why do all trailers feel the same? How do great trailers stand out? Let's look at the structure of trailers over time and see how they've grown, and why some are practically identical.
 

@@ -2,9 +2,8 @@
 title: "How to End a Movie"
 date: 2016-04-24T14:09:44Z
 previewImage: thumbnail.jpg
+youtubeLink: https://www.youtube.com/embed/V-YfeU82uqY
 ---
-
-<iframe width="1920" height="1080" src="https://www.youtube.com/embed/V-YfeU82uqY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 SPOILER ALERTS: 12 Angry Men, The Silence of the Lambs, and Psycho. The other movie clips only show the last shot and don't spoil anything. See the full list of movies referenced below.
 

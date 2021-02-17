@@ -2,9 +2,8 @@
 title: "What Long Takes Can't Do"
 date: 2016-03-27T14:14:52Z
 previewImage: thumbnail.jpg
+youtubeLink: https://www.youtube.com/embed/X3FlrbaHN2o
 ---
-
-<iframe width="1920" height="1080" src="https://www.youtube.com/embed/X3FlrbaHN2o" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 We all know how amazing long takes are, but what are their limitations? Let's explore elements of the long take to see how they work and maybe see what makes them not work.
 

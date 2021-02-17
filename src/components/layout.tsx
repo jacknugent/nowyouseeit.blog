@@ -3,15 +3,14 @@ import NavBar from "./navbar";
 
 type Props = {
   children: React.ReactNode;
-  fullLayout?: boolean;
 }
 
-const Layout = ({ children, fullLayout }: Props) => {
+const Layout = ({ children }: Props) => {
 
   return (
-    <div className="global-wrapper" data-is-full-layout={!!fullLayout}>
+    <div className="global-wrapper">
       <NavBar />
-      <main className="site-content" data-is-full-layout={!!fullLayout}>
+      <main className="site-content">
         {children}
       </main>
       <footer>© {new Date().getFullYear()} Now You See It </footer>

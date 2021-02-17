@@ -2,9 +2,8 @@
 title: "Movie Geometry - Shaping the Way You Think"
 date: 2016-10-08T19:54:22Z
 previewImage: thumbnail.jpg
+youtubeLink: https://www.youtube.com/embed/lLQJiEpCLQE
 ---
-
-<iframe width="1920" height="1080" src="https://www.youtube.com/embed/lLQJiEpCLQE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Shapes have meaning. That may sound crazy, but hear me out. Let's explore how cinematographers and directors create shapes inside the frame to add visual storytelling to their films.
 

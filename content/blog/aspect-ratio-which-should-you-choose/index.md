@@ -2,9 +2,8 @@
 title: "Aspect Ratio: Which Should You Choose?"
 date: 2015-09-05T21:28:14Z
 previewImage: thumbnail.jpg
+youtubeLink: https://www.youtube.com/embed/R26_F7pecqo
 ---
-
-<iframe width="1920" height="1080" src="https://www.youtube.com/embed/R26_F7pecqo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Directors have tons of aspect ratios to choose from. Which should they pick? Let's look at the thematic effect each different aspect ratio can have on the viewer.
 

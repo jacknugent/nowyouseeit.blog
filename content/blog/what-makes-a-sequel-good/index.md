@@ -2,9 +2,8 @@
 title: "What Makes A Sequel Good?"
 date: 2015-07-06T00:57:09Z
 previewImage: thumbnail.jpg
+youtubeLink: https://www.youtube.com/embed/ZEeoRgqj0Vc
 ---
-
-<iframe width="1920" height="1080" src="https://www.youtube.com/embed/ZEeoRgqj0Vc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Why are sequels so often letdowns? By comparing specific examples of successful and terrible sequels, we'll get some insight into how to make a good sequel.
 

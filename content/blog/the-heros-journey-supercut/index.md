@@ -2,9 +2,8 @@
 title: "The Hero's Journey - Supercut"
 date: 2016-10-29T20:05:52Z
 previewImage: thumbnail.jpg
+youtubeLink: https://www.youtube.com/embed/3hTKc9DAN88
 ---
-
-<iframe width="1920" height="1080" src="https://www.youtube.com/embed/3hTKc9DAN88" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Israel Kamakawiwo'ole - Somewhere Over The Rainbow (Thomas Jack Remix): http://bit.ly/2eH5RZY
 

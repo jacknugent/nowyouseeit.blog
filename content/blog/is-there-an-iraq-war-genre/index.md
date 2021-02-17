@@ -2,9 +2,8 @@
 title: "Is There An Iraq War Genre?"
 date: 2020-09-25T02:37:51Z
 previewImage: thumbnail.jpg
+youtubeLink: https://www.youtube.com/embed/GTCoPIalS4U
 ---
-
-<iframe width="1920" height="1080" src="https://www.youtube.com/embed/GTCoPIalS4U" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Listen to our podcast go deeper on Iraq War Films: https://bit.ly/3ctSY1e
 

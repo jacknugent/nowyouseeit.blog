@@ -2,9 +2,8 @@
 title: "The Truman Show: Death and Rebirth"
 date: 2015-06-07T23:06:37Z
 previewImage: thumbnail.jpg
+youtubeLink: https://www.youtube.com/embed/1NDI3sOQRIQ
 ---
-
-<iframe width="1920" height="1080" src="https://www.youtube.com/embed/1NDI3sOQRIQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Water is necessary for life, but what does it represent in film? In this video, we explore The Truman Show (spoilers) and many other films to see how water can be a powerful symbol of death and rebirth for a character.
 

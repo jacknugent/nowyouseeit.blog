@@ -111,6 +111,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       date: Date @dateformat
       previewImage: String
       titleImage: String
+      youtubeLink: String
     }
 
     type Fields {

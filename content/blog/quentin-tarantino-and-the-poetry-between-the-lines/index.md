@@ -2,9 +2,8 @@
 title: "Quentin Tarantino and the Poetry Between the Lines"
 date: 2018-07-23T16:19:43Z
 previewImage: thumbnail.jpg
+youtubeLink: https://www.youtube.com/embed/-sLV-UzASMg
 ---
-
-<iframe width="1920" height="1080" src="https://www.youtube.com/embed/-sLV-UzASMg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Quentin Tarantino embraced the classics and elevated them to a new level in his genre movies, creating something entirely unique. His directorial control and incredible knowledge of cinema from all over the world allows him to twist universal movie tropes into new, innovative stories.
 

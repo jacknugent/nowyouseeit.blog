@@ -2,9 +2,8 @@
 title: "Film Noir: The Case for Black and White"
 date: 2017-02-08T23:18:27Z
 previewImage: thumbnail.jpg
+youtubeLink: https://www.youtube.com/embed/LppctxCYBzM
 ---
-
-<iframe width="1920" height="1080" src="https://www.youtube.com/embed/LppctxCYBzM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Black and white has a gorgeous look in film. Let's take a look at Film Noir to see what it can do better than color and study how the techniques of black and white filmmaking continue to influence modern filmmaking (especially Breaking Bad).
 

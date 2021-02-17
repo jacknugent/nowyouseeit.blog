@@ -2,9 +2,8 @@
 title: "One Giant Leap - Supercut"
 date: 2016-12-20T17:47:07Z
 previewImage: thumbnail.jpg
+youtubeLink: https://www.youtube.com/embed/pAAsWGvkJ3g
 ---
-
-<iframe width="1920" height="1080" src="https://www.youtube.com/embed/pAAsWGvkJ3g" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 "We have lingered long enough on the shores of the cosmic ocean. We are ready at last to set sail for the stars."
 — Carl Sagan. Cosmos, 1980.

@@ -58,13 +58,15 @@ const BlogIndex = ({ data }: Props) => {
   return (
     <Layout>
       <SEO title="Posts" />
-      <h1>{siteTitle}</h1>
-      <p>{summary}</p>
-      <ol className="ps-0" style={{ listStyle: `none` }}>
-        {postsView?.map(post =>
-          <ArticlePreview key={post.frontmatter.title} post={post} />
-        )}
-      </ol>
+      <div className="medium-layout">
+        <h1>{siteTitle}</h1>
+        <p>{summary}</p>
+        <ol className="ps-0" style={{ listStyle: `none` }}>
+          {postsView?.map(post =>
+            <ArticlePreview key={post.frontmatter.title} post={post} />
+          )}
+        </ol>
+      </div>
     </Layout>
   );
 };

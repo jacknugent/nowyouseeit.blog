@@ -2,9 +2,8 @@
 title: "Film vs. Novel:  What Makes Them Different?"
 date: 2015-11-18T17:41:19Z
 previewImage: thumbnail.jpg
+youtubeLink: https://www.youtube.com/embed/F3QsUx0x_4w
 ---
-
-<iframe width="1920" height="1080" src="https://www.youtube.com/embed/F3QsUx0x_4w" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Some film adaptations of novels become better than the novel. Some, no matter how good, can't capture the heart of the novel. Why? Let's look at the nature of the two art forms and what makes them different, or the same.
 
