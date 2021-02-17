@@ -128,7 +128,7 @@
     }
 
     .icons-container {
-        justify-content: end;
+        justify-content: flex-end;
         padding-bottom: 0;
     }
 
