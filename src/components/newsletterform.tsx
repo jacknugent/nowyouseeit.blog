@@ -25,13 +25,15 @@ export default function NewsletterForm({ children }) {
             </p>
             <div className="w-100">
                 <form onSubmit={handleSubmit} className="newsletter-form position-relative mb-3 mt-3">
+                    <label className="newsletter-label" htmlFor="newsletterInput">Sign Up for Newsletter</label>
                     <input
                         className="newsletter-input"
-                        onChange={e => setEmailInput(e.target.value)}
-                        value={emailInput}
+                        id="newsletterInput"
                         type="text"
-                        name="name"
-                        placeholder="My email address is...." aria-labelledby="enteremailaddress" />
+                        name="names"
+                        placeholder="My email address is...."
+                        onChange={e => setEmailInput(e.target.value)}
+                        value={emailInput} />
                     <button
                         type="submit"
                         value="Submit"

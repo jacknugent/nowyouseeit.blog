@@ -55,7 +55,7 @@
   --color-heading-black: black;
   --color-accent: #d1dce5;
   --bg-dark: #212529;
-  --background-color: #e3e5ee;
+  --background-color: #e7e9f4;
 }
 
 .max-width-wrapper {
@@ -277,6 +277,11 @@ a:focus {
   border: 1px solid var(--color-secondary);
   padding: var(--spacing-2);
   color: var(--color-text);
+}
+
+.newsletter-label {
+  position: absolute;
+  visibility: hidden;
 }
 
 /* Custom classes */

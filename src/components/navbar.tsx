@@ -62,7 +62,7 @@ export default function NavBar() {
                         }}
                     />
                 )}</Link>
-            <button onClick={handleClick} className="hamburger">
+            <button aria-label="Toggle navbar" onClick={handleClick} className="hamburger">
                 <svg viewBox="0 0 100 80" width="30" height="30">
                     <rect width="90" height="7" rx="8"></rect>
                     <rect y="30" width="90" height="7" rx="8"></rect>
@@ -76,7 +76,7 @@ export default function NavBar() {
                         : isClicked
                             ? "active"
                             : "inactive"}`}>
-                <div className="navbar-links">
+                <ul className="navbar-links">
                     <li className="nav-item">
                         <Link
                             onClick={() => document.body.style.overflow = "auto"}
@@ -104,21 +104,21 @@ export default function NavBar() {
                             Stripes
                         </Link>
                     </li>
-                </div>
+                </ul>
                 <div className="icons-container">
-                    <a className="icon-container" href={`https://youtube.com/${social?.youtube || ``}`} target="_blank" rel="noopener">
+                    <a aria-label="Now You See It YouTube Page" className="icon-container" href={`https://youtube.com/${social?.youtube || ``}`} target="_blank" rel="noopener">
                         <YouTube />
                     </a>
-                    <a className="icon-container" href={`https://patreon.com/${social?.patreon || ``}`} target="_blank" rel="noopener">
+                    <a aria-label="Now You See It Patreon Page" className="icon-container" href={`https://patreon.com/${social?.patreon || ``}`} target="_blank" rel="noopener">
                         <Patreon />
                     </a>
-                    <a className="icon-container" href={`https://twitter.com/${social?.twitter || ``}`} target="_blank" rel="noopener">
+                    <a aria-label="Jack Nugent's twitter" className="icon-container" href={`https://twitter.com/${social?.twitter || ``}`} target="_blank" rel="noopener">
                         <Twitter />
                     </a>
-                    <a className="icon-container" href={`https://reddit.com/r/${social?.reddit || ``}`} target="_blank" rel="noopener">
+                    <a aria-label="Now You See It Reddit Page" className="icon-container" href={`https://reddit.com/r/${social?.reddit || ``}`} target="_blank" rel="noopener">
                         <Reddit />
                     </a>
-                    <a className="icon-container" href={`${data.site.siteMetadata?.siteUrl}/rss.xml`} target="_blank" rel="noopener">
+                    <a aria-label="Now You See It Rss Feed" className="icon-container" href={`${data.site.siteMetadata?.siteUrl}/rss.xml`} target="_blank" rel="noopener">
                         <Rss />
                     </a>
                 </div>
