@@ -1,6 +1,6 @@
 ---
 title: "Newsletter test"
-date: 2018-02-18T10:30:00Z
+date: 2020-02-18T10:30:00Z
 previewImage: thumbnail.jpg
 youtubeLink: https://www.youtube.com/embed/jGiqc3HSxEg
 ---
