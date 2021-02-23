@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`
+});
+
 module.exports = {
   siteMetadata: {
     title: `Now You See It`,
@@ -76,7 +80,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: `G-Q57384KKS1`,
+        trackingId: process.env.GOOGLE_ANALYTICS_ID,
       },
     },
     `gatsby-plugin-feed`,
@@ -91,6 +95,14 @@ module.exports = {
         display: `minimal-ui`,
         icon: `content/assets/profile-pic.png`,
       },
+    },
+    {
+      resolve: `gatsby-source-youtube-v2`,
+      options: {
+        channelId: "UCWTFGPpNQ0Ms6afXhaWDiRw",
+        apiKey: process.env.GATSBY_YOUTUBE_API,
+        maxVideos: 1000 // Defaults to 50
+      }
     },
     `gatsby-plugin-react-helmet`,
     {

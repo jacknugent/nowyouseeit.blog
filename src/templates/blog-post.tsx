@@ -15,20 +15,6 @@ type Props = {
         siteURL: string;
       }
     }
-    allFile: {
-      nodes: Array<{
-        relativePath: string;
-        sourceInstanceName: string;
-        childImageSharp?: {
-          fluid: FluidObject;
-          resize: {
-            src: string;
-            height: string;
-            width: string;
-          }
-        }
-      }>
-    }
     markdownRemark: {
       fields: {
         slug: string;
@@ -40,8 +26,26 @@ type Props = {
         title: string;
         date: string;
         description: string;
-        titleImage: string;
-        previewImage: string;
+        titleImage?: {
+          childImageSharp?: {
+            fluid: FluidObject;
+            resize: {
+              src: string;
+              width: string;
+              height: string;
+            }
+          }
+        };
+        previewImage?: {
+          childImageSharp?: {
+            fluid: FluidObject;
+            resize: {
+              src: string;
+              width: string;
+              height: string;
+            }
+          }
+        };
         youtubeLink: string;
       }
     }
@@ -68,8 +72,9 @@ const BlogPostTemplate = ({ data, location }: Props) => {
   const post = data.markdownRemark
   const { previous, next } = data
 
-  const titleImage = data.allFile.nodes.find(f => "/" + f.relativePath === (post.fields.slug + post.frontmatter?.titleImage))?.childImageSharp;
-  const previewImage = data.allFile.nodes.find(f => "/" + f.relativePath === (post.fields.slug + post.frontmatter?.previewImage))?.childImageSharp;
+  const titleImage = data.markdownRemark.frontmatter.titleImage?.childImageSharp;
+  const previewImage = data.markdownRemark.frontmatter.previewImage?.childImageSharp
+
   const image = titleImage || previewImage || null;
 
   return (
@@ -77,7 +82,7 @@ const BlogPostTemplate = ({ data, location }: Props) => {
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
-        image={image.resize}
+        image={image?.resize}
         pathname={location.pathname}
       />
       <article
@@ -146,22 +151,6 @@ export const pageQuery = graphql`
     $previousPostId: String
     $nextPostId: String
   ) {
-    allFile(filter: {sourceInstanceName: {eq: "blog"}, childImageSharp: {fixed: {width: {gt: 0}}}}) {
-      nodes {
-        relativePath
-        sourceInstanceName
-        childImageSharp {
-          resize(width: 1200) {
-            src
-            height
-            width
-          }
-          fluid(maxWidth: 896) {
-              ...GatsbyImageSharpFluid
-              }
-          }
-        }
-      }
     markdownRemark(id: { eq: $id }) {
       fields {
         slug
@@ -173,11 +162,33 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
-        titleImage
-        previewImage
-        youtubeLink
+        titleImage {
+          childImageSharp {
+            resize(width: 1200) {
+              src
+              height
+              width
+            }
+            fluid(maxWidth: 896) {
+                ...GatsbyImageSharpFluid
+                }
+            }
+          }
+        previewImage {
+          childImageSharp {
+            resize(width: 1200) {
+              src
+              height
+              width
+            }
+            fluid(maxWidth: 896) {
+                ...GatsbyImageSharpFluid
+                }
+            }
+          }
+          youtubeLink
+        }
       }
-    }
     previous: markdownRemark(id: { eq: $previousPostId }) {
       fields {
         slug

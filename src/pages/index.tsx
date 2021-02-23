@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { graphql } from "gatsby";
+import { FluidObject } from "gatsby-image";
 import ArticlePreview from "../components/articlepreview";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
@@ -27,7 +28,16 @@ export type Post = {
     date: Date;
     title: string;
     description: string;
-    previewImage: string;
+    previewImage?: {
+      childImageSharp?: {
+        fluid: FluidObject;
+        resize: {
+          src: string;
+          width: string;
+          height: string;
+        }
+      }
+    };
   }
 }
 
@@ -91,7 +101,18 @@ export const pageQuery = graphql`
           date(formatString: "MMMM DD, YYYY")
           title
           description
-          previewImage
+          previewImage {
+            childImageSharp {
+              resize(width: 1200) {
+                src
+                height
+                width
+              }
+              fluid(maxWidth: 896) {
+                  ...GatsbyImageSharpFluid
+              }
+            }
+          }
         }
       }
     }

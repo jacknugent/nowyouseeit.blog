@@ -1,5 +1,5 @@
 import React from "react";
-import { graphql, Link, useStaticQuery } from "gatsby";
+import { Link } from "gatsby";
 import Img, { FluidObject } from "gatsby-image";
 
 type Props = {
@@ -12,42 +12,22 @@ type Props = {
             title: string;
             date: Date;
             description: string;
-            previewImage: string;
-        }
-    }
-}
-
-type StaticQuery = {
-    allFile: {
-        nodes: Array<{
-            relativePath: string;
-            sourceInstanceName: string;
-            childImageSharp: {
-                fluid: FluidObject;
+            previewImage?: {
+                childImageSharp?: {
+                    fluid: FluidObject;
+                    resize: {
+                        src: string;
+                        width: string;
+                        height: string;
+                    }
+                }
             };
-        }>
+        }
     }
 }
 
 export default function ArticlePreview({ post }: Props) {
-    // TODO: check to see if there's a solution to this: https://github.com/gatsbyjs/gatsby/issues/4123
-    const allBlogImages = useStaticQuery<StaticQuery>(graphql`
-    query {
-        allFile(filter: {sourceInstanceName: {eq: "blog"}, childImageSharp: {fixed: {width: {gt: 0}}}}) {
-        nodes {
-          relativePath
-          sourceInstanceName
-          childImageSharp {
-            fluid(maxWidth: 600) {
-                ...GatsbyImageSharpFluid
-                }
-            }
-          }
-        }
-      }
-    `);
-
-    const previewImage = allBlogImages.allFile.nodes.find((f: { relativePath: string; }) => "/" + f.relativePath === (post.fields.slug + post.frontmatter?.previewImage))?.childImageSharp;
+    const previewImage = post.frontmatter.previewImage.childImageSharp;
 
     return (
         post &&
