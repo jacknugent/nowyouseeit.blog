@@ -19,8 +19,6 @@ build_site:
       - public
   only:
     - main
-  rules:
-    - when: manual
 
 deploy_production:
   image: python:latest
@@ -34,5 +32,3 @@ deploy_production:
     url: http://nowyouseeit.com
   only:
     - main
-  rules:
-    - when: manual
