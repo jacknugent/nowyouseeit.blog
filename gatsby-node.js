@@ -1,11 +1,18 @@
 const path = require(`path`);
 const { createFilePath } = require(`gatsby-source-filesystem`);
 
+const toKebabCase = str =>
+  str && str
+    .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
+    .map(x => x.toLowerCase())
+    .join('-');
+
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
 
   // Define a template for blog post
   const blogPost = path.resolve(`./src/templates/blog-post.tsx`);
+  const youtubePost = path.resolve(`./src/templates/youtube-post.tsx`);
 
   // Get all markdown blog posts sorted by date
   const result = await graphql(
@@ -17,9 +24,22 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         ) {
           nodes {
             id
+            frontmatter {
+              date
+            }
             fields {
               slug
             }
+          }
+        }
+        allYoutubeVideo(
+          sort: { fields: publishedAt, order: ASC }
+          limit: 1000,
+          ) {
+          nodes {
+            id
+            publishedAt
+            title
           }
         }
       }
@@ -35,7 +55,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return;
   }
 
-  const posts = result.data.allMarkdownRemark.nodes;
+  const youtubePosts = result.data.allYoutubeVideo.nodes
+    .map(v => (
+      {
+        id: v.id,
+        frontmatter: { date: v.publishedAt },
+        fields: { slug: `/${toKebabCase(v.title)}/` },
+        isYouTubeVideo: true
+      }));
+
+  const posts = youtubePosts
+    .concat(result.data.allMarkdownRemark.nodes)
+    .sort((a, b) => +new Date(b.frontmatter.date) - +new Date(a.frontmatter.date));
 
   // Create blog posts pages
   // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
@@ -46,6 +77,20 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     posts.forEach((post, index) => {
       const previousPostId = index === 0 ? null : posts[index - 1].id;
       const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id;
+
+      if (post.isYouTubeVideo)
+      {
+        createPage({
+          path: post.fields.slug,
+          component: youtubePost,
+          context: {
+            id: post.id,
+            previousPostId,
+            nextPostId,
+          },
+        });
+        return;
+      }
 
       createPage({
         path: post.fields.slug,

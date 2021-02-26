@@ -1,30 +1,10 @@
 import React from "react";
 import { Link } from "gatsby";
-import Img, { FluidObject } from "gatsby-image";
+import Img from "gatsby-image";
+import { replaceURLs } from "../common/globalFunctions";
+import { Post } from "../pages";
 
-type Props = {
-    post: {
-        excerpt: string;
-        fields: {
-            slug: string;
-        }
-        frontmatter: {
-            title: string;
-            date: Date;
-            description: string;
-            previewImage?: {
-                childImageSharp?: {
-                    fluid: FluidObject;
-                    resize: {
-                        src: string;
-                        width: string;
-                        height: string;
-                    }
-                }
-            };
-        }
-    }
-}
+export type Props = { post: Post }
 
 export default function ArticlePreview({ post }: Props) {
     const previewImage = post.frontmatter.previewImage.childImageSharp;
@@ -49,7 +29,7 @@ export default function ArticlePreview({ post }: Props) {
             <section>
                 <p
                     dangerouslySetInnerHTML={{
-                        __html: post.frontmatter.description || post.excerpt,
+                        __html: replaceURLs(post.frontmatter?.description?.split("\n")[0]) || post.excerpt,
                     }}
                     itemProp="description"
                 />

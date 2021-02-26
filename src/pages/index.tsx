@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { graphql } from "gatsby";
-import { FluidObject } from "gatsby-image";
+import { ChildImageSharpObject } from "../common/ChildImageSharpObject";
+import { toKebabCase } from "../common/globalFunctions";
 import ArticlePreview from "../components/articlepreview";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
@@ -16,6 +17,15 @@ type Props = {
     allMarkdownRemark: {
       nodes: Array<Post>
     }
+    allYoutubeVideo: {
+      nodes: {
+        id: string;
+        publishedAt: Date;
+        description: string;
+        title: string;
+        localThumbnail: ChildImageSharpObject;
+      }[]
+    }
   };
 };
 
@@ -28,17 +38,8 @@ export type Post = {
     date: Date;
     title: string;
     description: string;
-    previewImage?: {
-      childImageSharp?: {
-        fluid: FluidObject;
-        resize: {
-          src: string;
-          width: string;
-          height: string;
-        }
-      }
-    };
-  }
+    previewImage?: ChildImageSharpObject;
+  };
 }
 
 const BlogIndex = ({ data }: Props) => {
@@ -62,7 +63,27 @@ const BlogIndex = ({ data }: Props) => {
 
   const siteTitle = data.site.siteMetadata?.title || `Title`;
   const summary = data.site.siteMetadata?.description;
-  const posts = data.allMarkdownRemark.nodes;
+
+  const youtubePosts = data.allYoutubeVideo.nodes
+    .map(v => (
+      {
+        excerpt: v.description,
+        fields: {
+          slug: `/${toKebabCase(v.title)}/`
+        },
+        frontmatter: {
+          date: v.publishedAt,
+          title: v.title,
+          description: v.description,
+          previewImage: v.localThumbnail
+        }
+      } as Post));
+
+  const posts = youtubePosts
+    .concat(data.allMarkdownRemark.nodes)
+    .sort((a, b) => +new Date(b.frontmatter.date) - +new Date(a.frontmatter.date));
+
+  // const posts = data.allMarkdownRemark.nodes;
   const postsView = posts.slice(0, postCount);
 
   return (
@@ -111,6 +132,28 @@ export const pageQuery = graphql`
               fluid(maxWidth: 896) {
                   ...GatsbyImageSharpFluid
               }
+            }
+          }
+        }
+      }
+    }
+    allYoutubeVideo(
+      sort: { fields: publishedAt, order: ASC }
+      limit: 1000,
+      ) {
+      nodes {
+        description
+        publishedAt(formatString: "MMMM DD, YYYY")
+        title
+        localThumbnail {
+          childImageSharp {
+            resize(width: 1200) {
+              src
+              height
+              width
+            }
+            fluid(maxWidth: 896) {
+              ...GatsbyImageSharpFluid
             }
           }
         }

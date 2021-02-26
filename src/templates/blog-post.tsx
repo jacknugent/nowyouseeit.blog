@@ -1,6 +1,10 @@
 import React from "react";
 import { graphql, Link } from "gatsby";
-import Img, { FluidObject } from "gatsby-image";
+import Img from "gatsby-image";
+import { BlogSlug } from "../common/BlogSlug";
+import { ChildImageSharpObject } from "../common/ChildImageSharpObject";
+import { generateLinkFromPost } from "../common/globalFunctions";
+import { YouTubeSlug } from "../common/YouTubeSlug";
 import Layout from "../components/layout";
 import NewsletterForm from "../components/newsletterform";
 import SEO from "../components/seo";
@@ -26,56 +30,29 @@ type Props = {
         title: string;
         date: string;
         description: string;
-        titleImage?: {
-          childImageSharp?: {
-            fluid: FluidObject;
-            resize: {
-              src: string;
-              width: string;
-              height: string;
-            }
-          }
-        };
-        previewImage?: {
-          childImageSharp?: {
-            fluid: FluidObject;
-            resize: {
-              src: string;
-              width: string;
-              height: string;
-            }
-          }
-        };
+        titleImage?: ChildImageSharpObject;
+        previewImage?: ChildImageSharpObject;
         youtubeLink: string;
       }
     }
-    previous: {
-      fields: {
-        slug: string;
-      }
-      frontmatter: {
-        title: string;
-      }
-    }
-    next: {
-      fields: {
-        slug: string;
-      }
-      frontmatter: {
-        title: string;
-      }
-    }
+    previousBlog?: BlogSlug;
+    nextBlog?: BlogSlug;
+    previousVideo?: YouTubeSlug;
+    nextVideo?: YouTubeSlug;
   }
 }
 
 const BlogPostTemplate = ({ data, location }: Props) => {
   const post = data.markdownRemark
-  const { previous, next } = data
+  const { previousBlog, nextBlog, previousVideo, nextVideo } = data
 
   const titleImage = data.markdownRemark.frontmatter.titleImage?.childImageSharp;
   const previewImage = data.markdownRemark.frontmatter.previewImage?.childImageSharp
 
   const image = titleImage || previewImage || null;
+
+  const previousLink = generateLinkFromPost(previousBlog || previousVideo || null);
+  const nextLink = generateLinkFromPost(nextBlog || nextVideo || null);
 
   return (
     <Layout>
@@ -99,7 +76,6 @@ const BlogPostTemplate = ({ data, location }: Props) => {
                 height="1080"
                 src={post.frontmatter.youtubeLink}
                 frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen />
             </div>
           </div>}
@@ -124,16 +100,16 @@ const BlogPostTemplate = ({ data, location }: Props) => {
         <h4>See More</h4>
         <ul>
           <li>
-            {previous && (
-              <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
+            {previousLink && (
+              <Link to={previousLink.link} rel="prev">
+                ← {previousVideo.title}
               </Link>
             )}
           </li>
-          <li className={next && "mt-3"}>
-            {next && (
-              <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
+          <li className={nextLink && "mt-3"}>
+            {nextLink && (
+              <Link to={nextLink.link} rel="next">
+                {nextLink.title} →
               </Link>
             )}
           </li>
@@ -189,7 +165,7 @@ export const pageQuery = graphql`
           youtubeLink
         }
       }
-    previous: markdownRemark(id: { eq: $previousPostId }) {
+    previousBlog: markdownRemark(id: { eq: $previousPostId }) {
       fields {
         slug
       }
@@ -197,13 +173,19 @@ export const pageQuery = graphql`
         title
       }
     }
-    next: markdownRemark(id: { eq: $nextPostId }) {
+    nextBlog: markdownRemark(id: { eq: $nextPostId }) {
       fields {
         slug
       }
       frontmatter {
         title
       }
+    }
+    previousVideo: youtubeVideo(id: {eq: $previousPostId}) {
+      title
+    }
+    nextVideo: youtubeVideo(id: {eq: $nextPostId}) {
+      title
     }
   }
 `
