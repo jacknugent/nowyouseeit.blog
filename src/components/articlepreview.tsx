@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
 import Img from "gatsby-image";
-import { replaceURLs } from "../common/globalFunctions";
 import { Post } from "../pages";
 
 export type Props = { post: Post }
@@ -21,7 +20,10 @@ export default function ArticlePreview({ post }: Props) {
                 <h2 className="mt-4">
                     <Link to={post.fields.slug} itemProp="url">
                         {previewImage && <Img className="mb-2" fluid={previewImage.fluid} />}
-                        <span itemProp="headline">{post.frontmatter.title || post.fields.slug}</span>
+                        <div itemProp="headline">
+                            {post.frontmatter.title || post.fields.slug}
+                            <span className="badge">{post.excerpt ? "Article" : "Video"}</span>
+                        </div>
                     </Link>
                 </h2>
                 <small>{post.frontmatter.date}</small>
@@ -29,7 +31,7 @@ export default function ArticlePreview({ post }: Props) {
             <section>
                 <p
                     dangerouslySetInnerHTML={{
-                        __html: replaceURLs(post.frontmatter?.description?.split("\n")[0]) || post.excerpt,
+                        __html: post.excerpt || "",
                     }}
                     itemProp="description"
                 />

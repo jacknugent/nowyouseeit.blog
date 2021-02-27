@@ -2,6 +2,10 @@
     width: 100% !important;
 }
 
+.d-flex {
+    display: flex;
+}
+
 .mt-0 {
     margin-top: 0 !important;
 }

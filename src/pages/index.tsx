@@ -67,7 +67,6 @@ const BlogIndex = ({ data }: Props) => {
   const youtubePosts = data.allYoutubeVideo.nodes
     .map(v => (
       {
-        excerpt: v.description,
         fields: {
           slug: `/${toKebabCase(v.title)}/`
         },
@@ -83,7 +82,6 @@ const BlogIndex = ({ data }: Props) => {
     .concat(data.allMarkdownRemark.nodes)
     .sort((a, b) => +new Date(b.frontmatter.date) - +new Date(a.frontmatter.date));
 
-  // const posts = data.allMarkdownRemark.nodes;
   const postsView = posts.slice(0, postCount);
 
   return (

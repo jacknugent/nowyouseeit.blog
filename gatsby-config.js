@@ -108,7 +108,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-mailchimp",
       options: {
-        endpoint: "https://nowyouseeit.us1.list-manage.com/subscribe/post?u=9b30d01c8bf2ff2cc9d9a8848&amp;id=4c4eac9dc8",
+        endpoint: "https://nowyouseeit.us1.list-manage.com/subscribe/post?u=638bf16b8cac50f7b4e79c737&amp;id=a91812393e",
         timeout: 3500,
       },
     },

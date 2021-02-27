@@ -49,6 +49,7 @@
   --color-primary: #3c64be;
   --color-secondary: #FF6040;
   --color-secondary-light: #F08d76;
+  --color-grey: #A69B95;
   --color-text: #22272e;
   --color-text-light: #4f5969;
   --color-heading: #1a202c;
@@ -420,6 +421,22 @@ hr {
 
 .gatsby-highlight {
   margin-bottom: var(--spacing-8);
+}
+
+.badge {
+  color: rgb(228, 226, 222);
+  display: inline-flex;
+  padding: .25em .25em;
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25rem;
+  background-color: #6c757d;
+  margin: .2rem 0 1rem .65rem !important;
+  position: absolute;
 }
 
 /* Media queries */
