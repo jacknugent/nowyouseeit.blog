@@ -1,10 +1,7 @@
 import React from "react";
 import { graphql, Link } from "gatsby";
 import Img from "gatsby-image";
-import { BlogSlug } from "../common/BlogSlug";
-import { ChildImageSharpObject } from "../common/ChildImageSharpObject";
-import { generateLinkFromPost } from "../common/globalFunctions";
-import { YouTubeSlug } from "../common/YouTubeSlug";
+import { BlogSlug, ChildImageSharpObject, generateLinkFromPost, YouTubeSlug } from "../../plugins/gatsby-plugin-youtube-blog-helper";
 import Layout from "../components/layout";
 import NewsletterForm from "../components/newsletterform";
 import SEO from "../components/seo";

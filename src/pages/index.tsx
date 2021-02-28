@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { graphql } from "gatsby";
-import { ChildImageSharpObject } from "../common/ChildImageSharpObject";
-import { toKebabCase } from "../common/globalFunctions";
+import { ChildImageSharpObject, toKebabCase } from "../../plugins/gatsby-plugin-youtube-blog-helper";
 import ArticlePreview from "../components/articlepreview";
 import Layout from "../components/layout";
 import SEO from "../components/seo";

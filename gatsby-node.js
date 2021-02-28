@@ -1,11 +1,6 @@
 const path = require(`path`);
 const { createFilePath } = require(`gatsby-source-filesystem`);
-
-const toKebabCase = str =>
-  str && str
-    .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
-    .map(x => x.toLowerCase())
-    .join('-');
+const { toKebabCase } = require("./plugins/gatsby-plugin-youtube-blog-helper");
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
