@@ -52,7 +52,7 @@ var combineYouTubePostsAndBlogPosts = function (youtubePosts, blogPosts) {
             date: v.publishedAt,
             title: v.title,
             description: v.description,
-            previewImage: v.localThumbnail
+            titleImage: v.localThumbnail
         }
     }); })
         .concat(blogPosts)

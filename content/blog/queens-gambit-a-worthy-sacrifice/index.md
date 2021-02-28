@@ -1,7 +1,6 @@
 ---
 title: "Queen’s Gambit: A Worthy Sacrifice?"
 date: 2020-10-17T08:52:00Z
-previewImage: queensgambit.jpg
 titleImage: queensgambit.jpg
 ---
 ⭐️⭐️⭐️

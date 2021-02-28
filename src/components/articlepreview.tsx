@@ -6,7 +6,7 @@ import { Post } from "../pages";
 export type Props = { post: Post }
 
 export default function ArticlePreview({ post }: Props) {
-    const previewImage = post.frontmatter.previewImage.childImageSharp;
+    const titleImage = post.frontmatter.titleImage.childImageSharp;
 
     return (
         post &&
@@ -19,7 +19,7 @@ export default function ArticlePreview({ post }: Props) {
             <header>
                 <h2 className="mt-4">
                     <Link to={post.fields.slug} itemProp="url">
-                        {previewImage && <Img className="mb-2" fluid={previewImage.fluid} />}
+                        {titleImage && <Img className="mb-2" fluid={titleImage.fluid} />}
                         <div itemProp="headline">
                             {post.frontmatter.title || post.fields.slug}
                             <span className="badge">{post.excerpt ? "Article" : "Video"}</span>

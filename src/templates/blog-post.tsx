@@ -28,7 +28,6 @@ type Props = {
         date: string;
         description: string;
         titleImage?: ChildImageSharpObject;
-        previewImage?: ChildImageSharpObject;
         youtubeLink: string;
       }
     }
@@ -44,9 +43,6 @@ const BlogPostTemplate = ({ data, location }: Props) => {
   const { previousBlog, nextBlog, previousVideo, nextVideo } = data
 
   const titleImage = data.markdownRemark.frontmatter.titleImage?.childImageSharp;
-  const previewImage = data.markdownRemark.frontmatter.previewImage?.childImageSharp
-
-  const image = titleImage || previewImage || null;
 
   const previousLink = generateLinkFromPost(previousBlog || previousVideo || null);
   const nextLink = generateLinkFromPost(nextBlog || nextVideo || null);
@@ -56,7 +52,7 @@ const BlogPostTemplate = ({ data, location }: Props) => {
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
-        image={image?.resize}
+        image={titleImage?.resize}
         pathname={location.pathname}
       />
       <article
@@ -147,7 +143,7 @@ export const pageQuery = graphql`
                 }
             }
           }
-        previewImage {
+        titleImage {
           childImageSharp {
             resize(width: 1200) {
               src

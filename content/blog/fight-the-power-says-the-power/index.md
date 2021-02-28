@@ -1,7 +1,6 @@
 ---
 title: "\"Fight The Power,\" Says The Power: How the 1% Controls Conversations on Class"
 date: 2021-01-11T00:00:00Z
-previewImage: galgadot.jpg
 titleImage: galgadot.jpg
 ---
 ⭐️
