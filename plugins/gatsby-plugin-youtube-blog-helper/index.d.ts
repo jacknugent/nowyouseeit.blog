@@ -1,5 +1,28 @@
 import { FluidObject } from "gatsby-image";
-import { generateLinkFromPost, replaceURLs, toKebabCase } from "./globalFunctions";
+export declare type Post = {
+    id: string;
+    isYouTube: boolean;
+    excerpt: string;
+    html: string;
+    fields: {
+        slug: string;
+    };
+    frontmatter: {
+        date: Date;
+        title: string;
+        description: string;
+        previewImage?: ChildImageSharpObject;
+    };
+};
+export declare type YouTubeNode = {
+    id: string;
+    isYouTube: boolean;
+    html: string;
+    publishedAt: Date;
+    description?: string;
+    title: string;
+    localThumbnail?: ChildImageSharpObject;
+};
 export declare type ChildImageSharpObject = {
     childImageSharp?: {
         fluid: FluidObject;
@@ -21,5 +44,13 @@ export declare type BlogSlug = {
 export declare type YouTubeSlug = {
     title: string;
 };
-export { toKebabCase, replaceURLs, generateLinkFromPost };
+export declare const toKebabCase: (str: string) => string | undefined;
+export declare const replaceURLs: (message: string) => string;
+declare type LinkObject = {
+    title: string;
+    link: string;
+};
+export declare const generateLinkFromPost: (slug: BlogSlug | YouTubeSlug | null) => LinkObject | null;
+export declare const combineYouTubePostsAndBlogPosts: (youtubePosts: YouTubeNode[], blogPosts: Post[]) => Post[];
+export {};
 //# sourceMappingURL=index.d.ts.map

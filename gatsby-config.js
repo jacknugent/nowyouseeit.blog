@@ -1,4 +1,4 @@
-const { toKebabCase } = require("./plugins/gatsby-plugin-youtube-blog-helper");
+const { combineYouTubePostsAndBlogPosts } = require("./plugins/gatsby-plugin-youtube-blog-helper");
 
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`
@@ -103,45 +103,49 @@ module.exports = {
         `,
         feeds: [
           {
-            serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.edges.map(edge => {
-                return Object.assign({}, edge.node.frontmatter, {
-                  description: edge.node.excerpt,
-                  date: edge.node.frontmatter.date,
-                  url: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                  guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                  custom_elements: [{ "content:encoded": edge.node.html }],
-                });
-              });
-            },
+            serialize: ({ query: { site, allMarkdownRemark, allYoutubeVideo } }) =>
+              combineYouTubePostsAndBlogPosts(allYoutubeVideo.nodes, allMarkdownRemark.nodes).map(post =>
+                Object.assign({}, post.frontmatter, {
+                  description: post.excerpt,
+                  date: post.frontmatter.date,
+                  url: site.siteMetadata.siteUrl + post.fields.slug,
+                  guid: site.siteMetadata.siteUrl + post.fields.slug,
+                  custom_elements: [{ "content:encoded": post.html }],
+                })),
             query: `
               {
                 allMarkdownRemark(
                   sort: { order: DESC, fields: [frontmatter___date] },
                 ) {
-                  edges {
-                    node {
+                    nodes {
                       excerpt
                       html
                       fields { slug }
                       frontmatter {
                         title
                         date
-                      }
                     }
+                  }
+                }
+                allYoutubeVideo(
+                  sort: { fields: publishedAt, order: ASC }
+                  limit: 1000,
+                  ) {
+                  nodes {
+                    description
+                    publishedAt(formatString: "MMMM DD, YYYY")
+                    title
                   }
                 }
               }
             `,
             output: "/rss.xml",
-            title: "Your Site's RSS Feed",
+            title: "Now You See It",
             // optional configuration to insert feed reference in pages:
             // if `string` is used, it will be used to create RegExp and then test if pathname of
             // current page satisfied this regular expression;
             // if not provided or `undefined`, all pages will have feed reference inserted
             match: "^/blog/",
-            // optional configuration to specify external rss feed, such as feedburner
-            link: "https://feeds.feedburner.com/gatsby/blog",
           },
         ],
       },

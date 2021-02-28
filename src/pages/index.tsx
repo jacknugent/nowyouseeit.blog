@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { graphql } from "gatsby";
-import { ChildImageSharpObject, toKebabCase } from "../../plugins/gatsby-plugin-youtube-blog-helper";
+import { combineYouTubePostsAndBlogPosts, Post, YouTubeNode } from "../../plugins/gatsby-plugin-youtube-blog-helper";
 import ArticlePreview from "../components/articlepreview";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
@@ -17,29 +17,10 @@ type Props = {
       nodes: Array<Post>
     }
     allYoutubeVideo: {
-      nodes: {
-        id: string;
-        publishedAt: Date;
-        description: string;
-        title: string;
-        localThumbnail: ChildImageSharpObject;
-      }[]
+      nodes: YouTubeNode[]
     }
   };
 };
-
-export type Post = {
-  excerpt: string;
-  fields: {
-    slug: string;
-  }
-  frontmatter: {
-    date: Date;
-    title: string;
-    description: string;
-    previewImage?: ChildImageSharpObject;
-  };
-}
 
 const BlogIndex = ({ data }: Props) => {
   const [postCount, setPostCount] = useState(10);
@@ -63,23 +44,7 @@ const BlogIndex = ({ data }: Props) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`;
   const summary = data.site.siteMetadata?.description;
 
-  const youtubePosts = data.allYoutubeVideo.nodes
-    .map(v => (
-      {
-        fields: {
-          slug: `/${toKebabCase(v.title)}/`
-        },
-        frontmatter: {
-          date: v.publishedAt,
-          title: v.title,
-          description: v.description,
-          previewImage: v.localThumbnail
-        }
-      } as Post));
-
-  const posts = youtubePosts
-    .concat(data.allMarkdownRemark.nodes)
-    .sort((a, b) => +new Date(b.frontmatter.date) - +new Date(a.frontmatter.date));
+  const posts = combineYouTubePostsAndBlogPosts(data.allYoutubeVideo.nodes, data.allMarkdownRemark.nodes);
 
   const postsView = posts.slice(0, postCount);
 

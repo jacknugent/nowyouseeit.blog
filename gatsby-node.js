@@ -1,6 +1,6 @@
 const path = require(`path`);
 const { createFilePath } = require(`gatsby-source-filesystem`);
-const { toKebabCase } = require("./plugins/gatsby-plugin-youtube-blog-helper");
+const { toKebabCase, combineYouTubePostsAndBlogPosts } = require("./plugins/gatsby-plugin-youtube-blog-helper");
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
@@ -50,18 +50,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return;
   }
 
-  const youtubePosts = result.data.allYoutubeVideo.nodes
-    .map(v => (
-      {
-        id: v.id,
-        frontmatter: { date: v.publishedAt },
-        fields: { slug: `/${toKebabCase(v.title)}/` },
-        isYouTubeVideo: true
-      }));
-
-  const posts = youtubePosts
-    .concat(result.data.allMarkdownRemark.nodes)
-    .sort((a, b) => +new Date(b.frontmatter.date) - +new Date(a.frontmatter.date));
+  const posts = combineYouTubePostsAndBlogPosts(result.data.allYoutubeVideo.nodes, result.data.allMarkdownRemark.nodes);
 
   // Create blog posts pages
   // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
@@ -73,7 +62,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       const previousPostId = index === 0 ? null : posts[index - 1].id;
       const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id;
 
-      if (post.isYouTubeVideo)
+      if (post.isYouTube)
       {
         createPage({
           path: post.fields.slug,
