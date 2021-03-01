@@ -110,6 +110,9 @@ module.exports = {
                   date: post.frontmatter.date,
                   url: site.siteMetadata.siteUrl + post.fields.slug,
                   guid: site.siteMetadata.siteUrl + post.fields.slug,
+                  enclosure: post.frontmatter.titleImage.publicURL && {
+                    url: site.siteMetadata.siteUrl + post.frontmatter.titleImage.publicURL,
+                  },
                   custom_elements: [{ "content:encoded": post.html }],
                 })),
             query: `
@@ -124,6 +127,9 @@ module.exports = {
                       frontmatter {
                         title
                         date
+                        titleImage {
+                          publicURL
+                      }
                     }
                   }
                 }
@@ -135,6 +141,9 @@ module.exports = {
                     description
                     publishedAt(formatString: "MMMM DD, YYYY")
                     title
+                    localThumbnail {
+                      publicURL
+                    }
                   }
                 }
               }

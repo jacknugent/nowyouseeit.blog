@@ -38,23 +38,28 @@ var generateLinkFromPost = function (slug) {
 exports.generateLinkFromPost = generateLinkFromPost;
 var combineYouTubePostsAndBlogPosts = function (youtubePosts, blogPosts) {
     return youtubePosts
-        .map(function (v) { return ({
-        id: v.id,
-        isYouTube: true,
-        fields: {
-            slug: "/" + exports.toKebabCase(v.title) + "/"
-        },
-        html: (v.description || "")
-            .split("\n")
-            .map(function (d) { return "<p> " + exports.replaceURLs(d) + " <p/>"; })
-            .join(""),
-        frontmatter: {
-            date: v.publishedAt,
-            title: v.title,
-            description: v.description,
-            titleImage: v.localThumbnail
-        }
-    }); })
+        .map(function (v) {
+        var _a;
+        return ({
+            id: v.id,
+            isYouTube: true,
+            fields: {
+                slug: "/" + exports.toKebabCase(v.title) + "/"
+            },
+            html: (v.description || "")
+                .split("\n")
+                .map(function (d) { return "<p> " + exports.replaceURLs(d) + " <p/>"; })
+                .join(""),
+            frontmatter: {
+                date: v.publishedAt,
+                title: v.title,
+                description: v.description,
+                titleImage: {
+                    publicURL: (_a = v.localThumbnail) === null || _a === void 0 ? void 0 : _a.publicURL
+                }
+            }
+        });
+    })
         .concat(blogPosts)
         .sort(function (a, b) { return +new Date(b.frontmatter.date) - +new Date(a.frontmatter.date); });
 };

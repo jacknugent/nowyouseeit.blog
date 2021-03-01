@@ -12,7 +12,9 @@ export type Post = {
     date: Date;
     title: string;
     description: string;
-    titleImage?: ChildImageSharpObject;
+    titleImage?: {
+      publicURL: string;
+    };
   };
 }
 
@@ -27,6 +29,7 @@ export type YouTubeNode = {
 }
 
 export type ChildImageSharpObject = {
+  publicURL?: string;
   childImageSharp?: {
       fluid: FluidObject;
       resize: {
@@ -108,7 +111,9 @@ export const combineYouTubePostsAndBlogPosts = (youtubePosts: YouTubeNode[], blo
           date: v.publishedAt,
           title: v.title,
           description: v.description,
-          titleImage: v.localThumbnail
+          titleImage: {
+            publicURL: v.localThumbnail?.publicURL
+          }
         }
       } as Post))
     .concat(blogPosts)

@@ -11,7 +11,9 @@ export declare type Post = {
         date: Date;
         title: string;
         description: string;
-        titleImage?: ChildImageSharpObject;
+        titleImage?: {
+            publicURL: string;
+        };
     };
 };
 export declare type YouTubeNode = {
@@ -24,6 +26,7 @@ export declare type YouTubeNode = {
     localThumbnail?: ChildImageSharpObject;
 };
 export declare type ChildImageSharpObject = {
+    publicURL?: string;
     childImageSharp?: {
         fluid: FluidObject;
         resize: {
