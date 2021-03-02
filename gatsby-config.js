@@ -113,7 +113,7 @@ module.exports = {
                   enclosure: post.frontmatter.titleImage.publicURL && {
                     url: site.siteMetadata.siteUrl + post.frontmatter.titleImage.publicURL,
                   },
-                  custom_elements: [{ "content:encoded": post.html }],
+                  custom_elements: [{ "content:encoded": !post.youtubeLink && post.html }],
                 })),
             query: `
               {
