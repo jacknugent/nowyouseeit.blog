@@ -28,7 +28,6 @@ type Props = {
         date: string;
         description: string;
         titleImage?: ChildImageSharpObject;
-        youtubeLink: string;
       }
     }
     previousBlog?: BlogSlug;
@@ -61,17 +60,6 @@ const BlogPostTemplate = ({ data, location }: Props) => {
         itemType="http://schema.org/Article"
       >
         {titleImage && <Img className="mt-2 mb-2 large-layout" fluid={titleImage.fluid} />}
-        {post.frontmatter.youtubeLink &&
-          <div className="large-layout">
-            <div className="youtube-iframe mt-2 mb-2">
-              <iframe
-                width="1920"
-                height="1080"
-                src={post.frontmatter.youtubeLink}
-                frameBorder="0"
-                allowFullScreen />
-            </div>
-          </div>}
         <header>
           <h1 itemProp="headline" className="headline medium-layout">{post.frontmatter.title}</h1>
           <p className="medium-layout">{post.frontmatter.date}</p>
@@ -155,7 +143,6 @@ export const pageQuery = graphql`
                 }
             }
           }
-          youtubeLink
         }
       }
     previousBlog: markdownRemark(id: { eq: $previousPostId }) {

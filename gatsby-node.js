@@ -62,7 +62,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       const previousPostId = index === 0 ? null : posts[index - 1].id;
       const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id;
 
-      if (post.isYouTube)
+      if (post.youtubeLink)
       {
         createPage({
           path: post.fields.slug,
@@ -138,7 +138,6 @@ exports.createSchemaCustomization = ({ actions }) => {
       title: String
       description: String
       date: Date @dateformat
-      youtubeLink: String
     }
 
     type Fields {

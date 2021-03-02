@@ -1,7 +1,7 @@
 import { FluidObject } from "gatsby-image";
 export declare type Post = {
     id: string;
-    isYouTube: boolean;
+    youtubeLink?: string;
     excerpt: string;
     html: string;
     fields: {
@@ -18,12 +18,12 @@ export declare type Post = {
 };
 export declare type YouTubeNode = {
     id: string;
-    isYouTube: boolean;
     html: string;
     publishedAt: Date;
     description?: string;
     title: string;
     localThumbnail?: ChildImageSharpObject;
+    videoId: string;
 };
 export declare type ChildImageSharpObject = {
     publicURL?: string;

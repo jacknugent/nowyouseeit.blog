@@ -108,7 +108,7 @@ module.exports = {
                 Object.assign({}, post.frontmatter, {
                   description: post.excerpt,
                   date: post.frontmatter.date,
-                  url: site.siteMetadata.siteUrl + post.fields.slug,
+                  url: post.youtubeLink || (site.siteMetadata.siteUrl + post.fields.slug),
                   guid: site.siteMetadata.siteUrl + post.fields.slug,
                   enclosure: post.frontmatter.titleImage.publicURL && {
                     url: site.siteMetadata.siteUrl + post.frontmatter.titleImage.publicURL,
@@ -144,6 +144,7 @@ module.exports = {
                     localThumbnail {
                       publicURL
                     }
+                    videoId
                   }
                 }
               }

@@ -2,7 +2,7 @@ import { FluidObject } from "gatsby-image";
 
 export type Post = {
   id: string;
-  isYouTube: boolean;
+  youtubeLink?: string;
   excerpt: string;
   html: string;
   fields: {
@@ -20,12 +20,12 @@ export type Post = {
 
 export type YouTubeNode = {
     id: string;
-    isYouTube: boolean;
     html: string;
     publishedAt: Date;
     description?: string;
     title: string;
     localThumbnail?: ChildImageSharpObject;
+    videoId: string;
 }
 
 export type ChildImageSharpObject = {
@@ -99,7 +99,7 @@ export const combineYouTubePostsAndBlogPosts = (youtubePosts: YouTubeNode[], blo
     .map(v => (
       {
         id: v.id,
-        isYouTube: true,
+        youtubeLink: "https://www.youtube.com/watch?v=" + v.videoId,
         fields: {
           slug: `/${toKebabCase(v.title)}/`
         },

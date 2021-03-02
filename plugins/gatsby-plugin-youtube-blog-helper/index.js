@@ -42,7 +42,7 @@ var combineYouTubePostsAndBlogPosts = function (youtubePosts, blogPosts) {
         var _a;
         return ({
             id: v.id,
-            isYouTube: true,
+            youtubeLink: "https://www.youtube.com/watch?v=" + v.videoId,
             fields: {
                 slug: "/" + exports.toKebabCase(v.title) + "/"
             },
