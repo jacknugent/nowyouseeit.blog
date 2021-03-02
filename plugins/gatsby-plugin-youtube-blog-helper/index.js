@@ -39,7 +39,7 @@ exports.generateLinkFromPost = generateLinkFromPost;
 var combineYouTubePostsAndBlogPosts = function (youtubePosts, blogPosts) {
     return youtubePosts
         .map(function (v) {
-        var _a;
+        var _a, _b;
         return ({
             id: v.id,
             youtubeLink: "https://www.youtube.com/watch?v=" + v.videoId,
@@ -55,7 +55,8 @@ var combineYouTubePostsAndBlogPosts = function (youtubePosts, blogPosts) {
                 title: v.title,
                 description: v.description,
                 titleImage: {
-                    publicURL: (_a = v.localThumbnail) === null || _a === void 0 ? void 0 : _a.publicURL
+                    publicURL: (_a = v.localThumbnail) === null || _a === void 0 ? void 0 : _a.publicURL,
+                    childImageSharp: (_b = v.localThumbnail) === null || _b === void 0 ? void 0 : _b.childImageSharp
                 }
             }
         });

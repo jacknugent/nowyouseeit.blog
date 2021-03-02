@@ -11,9 +11,7 @@ export declare type Post = {
         date: Date;
         title: string;
         description: string;
-        titleImage?: {
-            publicURL: string;
-        };
+        titleImage?: ChildImageSharpObject;
     };
 };
 export declare type YouTubeNode = {

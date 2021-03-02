@@ -12,9 +12,7 @@ export type Post = {
     date: Date;
     title: string;
     description: string;
-    titleImage?: {
-      publicURL: string;
-    };
+    titleImage?: ChildImageSharpObject;
   };
 }
 
@@ -112,7 +110,8 @@ export const combineYouTubePostsAndBlogPosts = (youtubePosts: YouTubeNode[], blo
           title: v.title,
           description: v.description,
           titleImage: {
-            publicURL: v.localThumbnail?.publicURL
+            publicURL: v.localThumbnail?.publicURL,
+            childImageSharp: v.localThumbnail?.childImageSharp
           }
         }
       } as Post))
