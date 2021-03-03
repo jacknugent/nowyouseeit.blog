@@ -31,7 +31,7 @@ const BlogIndex = ({ data }: Props) => {
       var scrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
       var scrollHeight = ((document.documentElement && document.documentElement.scrollHeight) || document.body.scrollHeight) || document.body.scrollHeight;
       var almostScrolledToBottom = (scrollTop + window.innerHeight) >= scrollHeight - 300;
-      if (almostScrolledToBottom)
+      if (almostScrolledToBottom && postCount < postsView.length)
         setPostCount(postCount + 10)
     }
   }

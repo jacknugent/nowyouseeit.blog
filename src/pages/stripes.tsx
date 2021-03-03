@@ -66,7 +66,7 @@ export default function Stripes() {
       var scrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
       var scrollHeight = ((document.documentElement && document.documentElement.scrollHeight) || document.body.scrollHeight) || document.body.scrollHeight;
       var almostScrolledToBottom = (scrollTop + window.innerHeight) >= scrollHeight - 300;
-      if (almostScrolledToBottom)
+      if (almostScrolledToBottom && imageCount < imageYamls.length)
         setImageCount(imageCount + 40)
     }
   }
@@ -118,7 +118,7 @@ export default function Stripes() {
           .filter(image => image.title && (image.title?.toLowerCase() || "").includes(stripeSearch.toLowerCase()))
           .map((image, i) => (
             !image.childImageSharp
-              ? console.error(`Image not found for Yaml: ${JSON.stringify(image)}`)
+              ? console.log(`Image not found for Yaml: ${JSON.stringify(image)}`)
               : <button
                 onClick={() => setShowDetails(showDetails !== i ? i : -1)}
                 className="stripe-container position-relative"
