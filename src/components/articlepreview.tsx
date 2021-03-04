@@ -21,7 +21,7 @@ export default function ArticlePreview({ post }: Props) {
                     <Link to={post.fields.slug} itemProp="url">
                         {titleImage && <Img className="mb-2" fluid={titleImage.fluid} />}
                         <div itemProp="headline">
-                            {post.frontmatter.title || post.fields.slug}
+                            <span className="title-container">{post.frontmatter.title || post.fields.slug}</span>
                             <span className="badge">{post.excerpt ? "Article" : "Video"}</span>
                         </div>
                     </Link>
