@@ -55,7 +55,7 @@ export default function Stripes() {
     }
   `)
   const [stripeSearch, setStripeSearch] = useState("");
-  const [imageCount, setImageCount] = useState(75);
+  const [imageCount, setImageCount] = useState(50);
   const [showDetails, setShowDetails] = useState(-1);
   const stripeContainerRef = useRef(null);
   useOnOutsideClick(stripeContainerRef, () => setShowDetails(-1));
@@ -136,7 +136,7 @@ export default function Stripes() {
       </div>
       {imageCount < combinedInfo.length &&
         <div className="load-more-button-container mt-2">
-          <button className="load-more-button" onClick={() => setImageCount(imageCount + 75)}>Load More</button>
+          <button className="load-more-button" onClick={() => setImageCount(imageCount + 50)}>Load More</button>
         </div>}
     </Layout >
   )
