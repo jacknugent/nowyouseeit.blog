@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { graphql } from "gatsby";
 import { combineYouTubePostsAndBlogPosts, Post, YouTubeNode } from "../../plugins/gatsby-plugin-youtube-blog-helper";
 import ArticlePreview from "../components/articlepreview";
@@ -25,22 +25,6 @@ type Props = {
 const BlogIndex = ({ data }: Props) => {
   const [postCount, setPostCount] = useState(10);
 
-  const infiniteScroll = () => {
-    if (window !== undefined) {
-      // logic from https://stackoverflow.com/a/22394544
-      var scrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
-      var scrollHeight = ((document.documentElement && document.documentElement.scrollHeight) || document.body.scrollHeight) || document.body.scrollHeight;
-      var almostScrolledToBottom = (scrollTop + window.innerHeight) >= scrollHeight - 300;
-      if (almostScrolledToBottom && postCount < postsView.length)
-        setPostCount(postCount + 10)
-    }
-  }
-
-  useEffect(() => {
-    window.addEventListener("scroll", infiniteScroll);
-    return () => window.removeEventListener("scroll", infiniteScroll);
-  });
-
   const siteTitle = data.site.siteMetadata?.title || `Title`;
   const summary = data.site.siteMetadata?.description;
 
@@ -59,6 +43,10 @@ const BlogIndex = ({ data }: Props) => {
             <ArticlePreview key={post.frontmatter.title} post={post} />
           )}
         </div>
+        {postCount < posts.length &&
+          <div className="load-more-button-container">
+            <button className="load-more-button" onClick={() => setPostCount(postCount + 10)}>Load More</button>
+          </div>}
       </div>
     </Layout>
   );

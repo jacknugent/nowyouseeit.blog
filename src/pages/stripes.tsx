@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import Img, { FluidObject } from "gatsby-image";
 import Layout from "../components/layout";
@@ -55,26 +55,10 @@ export default function Stripes() {
     }
   `)
   const [stripeSearch, setStripeSearch] = useState("");
-  const [imageCount, setImageCount] = useState(40);
+  const [imageCount, setImageCount] = useState(75);
   const [showDetails, setShowDetails] = useState(-1);
   const stripeContainerRef = useRef(null);
   useOnOutsideClick(stripeContainerRef, () => setShowDetails(-1));
-
-  const infiniteScroll = () => {
-    if (window !== undefined) {
-      // logic from https://stackoverflow.com/a/22394544
-      var scrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
-      var scrollHeight = ((document.documentElement && document.documentElement.scrollHeight) || document.body.scrollHeight) || document.body.scrollHeight;
-      var almostScrolledToBottom = (scrollTop + window.innerHeight) >= scrollHeight - 300;
-      if (almostScrolledToBottom && imageCount < imageYamls.length)
-        setImageCount(imageCount + 40)
-    }
-  }
-
-  useEffect(() => {
-    window.addEventListener("scroll", infiniteScroll);
-    return () => window.removeEventListener("scroll", infiniteScroll);
-  });
 
   const imageFiles = data.allFile.nodes;
   const imageYamls = data.allStripeImageDescriptionsYaml.nodes;
@@ -148,6 +132,10 @@ export default function Stripes() {
               </button>
           ))}
       </div>
+      {imageCount < imageYamls.length &&
+        <div className="load-more-button-container mt-2">
+          <button className="load-more-button" onClick={() => setImageCount(imageCount + 75)}>Load More</button>
+        </div>}
     </Layout >
   )
 }
