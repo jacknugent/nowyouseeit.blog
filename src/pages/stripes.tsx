@@ -67,11 +67,14 @@ export default function Stripes() {
     !imageYamls.find(y => y.file === `${i.fileName}.${i.extension}`)
     && console.error(`File ${i.fileName}.${i.extension} does not have an assocaited Yaml description`))
 
-  const combinedInfoView = imageYamls
+  const combinedInfo = imageYamls
     .map(y => ({
       ...y,
       ...imageFiles.find(i => `${i.fileName}.${i.extension}` === y.file),
     }))
+    .filter(image => image.title && (image.title?.toLowerCase() || "").includes(stripeSearch.toLowerCase()));
+
+  const combinedInfoView = combinedInfo
     .slice(0, imageCount);
 
   return (
@@ -99,7 +102,6 @@ export default function Stripes() {
       </div>
       <div ref={stripeContainerRef} className="stripes-container">
         {combinedInfoView
-          .filter(image => image.title && (image.title?.toLowerCase() || "").includes(stripeSearch.toLowerCase()))
           .map((image, i) => (
             !image.childImageSharp
               ? console.log(`Image not found for Yaml: ${JSON.stringify(image)}`)
@@ -132,7 +134,7 @@ export default function Stripes() {
               </button>
           ))}
       </div>
-      {imageCount < imageYamls.length &&
+      {imageCount < combinedInfo.length &&
         <div className="load-more-button-container mt-2">
           <button className="load-more-button" onClick={() => setImageCount(imageCount + 75)}>Load More</button>
         </div>}
