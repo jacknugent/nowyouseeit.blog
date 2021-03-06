@@ -55,10 +55,12 @@ export default function Stripes() {
     }
   `)
   const [stripeSearch, setStripeSearch] = useState("");
-  const [imageCount, setImageCount] = useState(50);
   const [showDetails, setShowDetails] = useState(-1);
+  const [page, setPage] = useState(1);
   const stripeContainerRef = useRef(null);
   useOnOutsideClick(stripeContainerRef, () => setShowDetails(-1));
+
+  const resultsPerPage = 75;
 
   const imageFiles = data.allFile.nodes;
   const imageYamls = data.allStripeImageDescriptionsYaml.nodes;
@@ -75,7 +77,7 @@ export default function Stripes() {
     .filter(image => image.title && (image.title?.toLowerCase() || "").includes(stripeSearch.toLowerCase()));
 
   const combinedInfoView = combinedInfo
-    .slice(0, imageCount);
+    .slice((page - 1) * resultsPerPage, ((page - 1) * resultsPerPage) + resultsPerPage);
 
   return (
     <Layout>
@@ -95,7 +97,10 @@ export default function Stripes() {
         <input
           className="stripe-search-input p-1"
           value={stripeSearch}
-          onChange={e => setStripeSearch(e.currentTarget.value)}
+          onChange={e => {
+            setStripeSearch(e.currentTarget.value)
+            setPage(1)
+          }}
           type="text"
           id="stripeSearch"
           name="stripeSearch" />
@@ -134,10 +139,22 @@ export default function Stripes() {
               </button>
           ))}
       </div>
-      {imageCount < combinedInfo.length &&
-        <div className="load-more-button-container mt-2">
-          <button className="load-more-button" onClick={() => setImageCount(imageCount + 50)}>Load More</button>
-        </div>}
+      <div className="paging-button-container">
+        <div className="mt-2">
+          {Math.ceil(combinedInfo.length / resultsPerPage) <= 1
+            ? null
+            : Array(Math.ceil(combinedInfo.length / resultsPerPage))
+              .fill(null)
+              .map((_, i) =>
+                <button
+                  key={i}
+                  onClick={() => setPage(i + 1)}
+                  className={`paging-button ${(i + 1 === page) && "active"}`}
+                >
+                  {i + 1}
+                </button>)}
+        </div>
+      </div>
     </Layout >
   )
 }
