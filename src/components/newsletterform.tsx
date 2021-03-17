@@ -13,11 +13,17 @@ export default function NewsletterForm({ children }) {
     const handleSubmit = async (e: React.SyntheticEvent): Promise<void> => {
         e.preventDefault()
         if (emailInput) {
-            const result = await addToMailchimp(emailInput, null, null)
-            if(result.msg.includes("Almost finished...")) {
-                result.msg = "Almost finished... We need to confirm your email address. To complete the subscription process, please click the link in the email we just sent you (it may be in your spam/promotions folder)";
+            try {
+                const result = await addToMailchimp(emailInput, null, null);
+                if(result.msg.includes("Almost finished...")) {
+                    result.msg = "Almost finished... To complete the subscription process, please click the link in the email we just sent you (it may be in your spam/promotions folder)";
+                }
+                setMailChimpMessage(result);
             }
-            setMailChimpMessage(result)
+            catch {
+                const result = { msg: "Failed to sign up to newsletter", result: "error" } as MailChimpResponse;
+                setMailChimpMessage(result);
+            }
         }
     }
 
