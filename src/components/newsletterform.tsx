@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import addToMailchimp from "gatsby-plugin-mailchimp";
+import { resourceLimits } from "worker_threads";
 
 type MailChimpResponse = {
     msg: string;
@@ -14,6 +15,9 @@ export default function NewsletterForm({ children }) {
         e.preventDefault()
         if (emailInput) {
             const result = await addToMailchimp(emailInput, null, null)
+            if(result.msg.includes("Almost finished...")) {
+                result.msg = "Almost finished... We need to confirm your email address. To complete the subscription process, please click the link in the email we just sent you (it may be in your spam/promotions folder)";
+            }
             setMailChimpMessage(result)
         }
     }
