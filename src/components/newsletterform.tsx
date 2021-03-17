@@ -45,7 +45,7 @@ export default function NewsletterForm({ children }) {
                     </button>
                     {mailChimpMessage &&
                         <p
-                            className={mailChimpMessage.result === "success" ? "text-success" : "text-danger"}
+                            className={mailChimpMessage.result === "success" ? "text-success mt-1" : "text-danger mt-1"}
                             dangerouslySetInnerHTML={{ __html: mailChimpMessage.msg }} />}
                 </form>
             </div>
