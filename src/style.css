@@ -455,7 +455,7 @@ hr {
   vertical-align: baseline;
   border-radius: .25rem;
   background-color: #6c757d;
-  margin: .2rem 0 1rem .2rem !important;
+  margin-left: .2rem !important;
 }
 
 .title-container {
