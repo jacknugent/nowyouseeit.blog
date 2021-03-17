@@ -79,6 +79,11 @@ export default function Stripes() {
   const combinedInfoView = combinedInfo
     .slice((page - 1) * resultsPerPage, ((page - 1) * resultsPerPage) + resultsPerPage);
 
+  const handlePageClick = (i: number) => {
+    setPage(i);
+    window.scrollTo(0, 425);
+  }
+
   return (
     <Layout>
       <SEO title="Stripes Gallery" />
@@ -148,7 +153,7 @@ export default function Stripes() {
               .map((_, i) =>
                 <button
                   key={i}
-                  onClick={() => setPage(i + 1)}
+                  onClick={() => handlePageClick(i + 1)}
                   className={`paging-button ${(i + 1 === page) && "active"}`}
                 >
                   {i + 1}
