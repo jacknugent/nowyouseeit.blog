@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import addToMailchimp from "gatsby-plugin-mailchimp";
-import { resourceLimits } from "worker_threads";
 
 type MailChimpResponse = {
     msg: string;
