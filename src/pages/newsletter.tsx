@@ -4,17 +4,7 @@ import Layout from "../components/layout";
 import NewsletterForm from "../components/newsletterform";
 import SEO from "../components/seo";
 
-type Props = {
-  data: {
-    site: {
-      siteMetadata: {
-        title: string;
-      }
-    }
-  }
-}
-
-export default function Newsletter({ data }: Props) {
+export default function Newsletter() {
   return (
     <Layout>
       <SEO title="Newsletter" />
@@ -26,13 +16,3 @@ export default function Newsletter({ data }: Props) {
     </Layout>
   )
 }
-
-export const pageQuery = graphql`
-{
-  site {
-    siteMetadata {
-      title
-    }
-  }
-}
-`
