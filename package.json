@@ -37,7 +37,8 @@
   "devDependencies": {
     "@types/node": "^14.14.35",
     "@types/react": "^17.0.3",
-    "@types/react-dom": "^17.0.2"
+    "@types/react-dom": "^17.0.2",
+    "gatsby-plugin-remove-trailing-slashes": "^3.1.0"
   },
   "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
   "keywords": [
