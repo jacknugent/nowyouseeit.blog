@@ -21,7 +21,7 @@ export default function NewsletterForm({ children }) {
                 setMailChimpMessage(result);
             }
             catch {
-                const result = { msg: "Failed to sign up to newsletter", result: "error" } as MailChimpResponse;
+                const result = { msg: "Failed to sign up to newsletter. This will happen if you're in incognito/privacy mode.", result: "error" } as MailChimpResponse;
                 setMailChimpMessage(result);
             }
         }

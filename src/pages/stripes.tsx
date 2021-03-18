@@ -125,11 +125,11 @@ export default function Stripes() {
                   flexGrow: image.childImageSharp.fluid.aspectRatio * 350,
                 }}
               >
-                {<div className={`${showDetails === i && "show"} image-description p-2 bg-dark`}>
+                <div className={`${showDetails === i && "show"} image-description p-2 bg-dark`}>
                   <p className="text-light mb-1">{image.title}</p>
                   <p className="text-light mb-0">{image.description}</p>
                   {image.credit && <p className="text-light mb-0">Contributed By: {image.credit}</p>}
-                </div>}
+                </div>
                 <div
                   className="stripe-image-background"
                   style={{
