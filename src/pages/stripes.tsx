@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import Img, { FluidObject } from "gatsby-image";
+import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image"
 import Layout from "../components/layout";
 import NewsletterForm from "../components/newsletterform";
 import SEO from "../components/seo";
@@ -26,6 +27,7 @@ type ImageFile = {
   fileName: string;
   extension: string;
   childImageSharp?: {
+    gatsbyImageData: IGatsbyImageData;
     fluid: FluidObject;
   }
 }
@@ -46,6 +48,9 @@ export default function Stripes() {
           fileName: name
           extension
           childImageSharp {
+            gatsbyImageData(
+              layout: FULL_WIDTH
+              quality: 100)
             fluid {
               ...GatsbyImageSharpFluid
             }
@@ -112,37 +117,37 @@ export default function Stripes() {
       </div>
       <div ref={stripeContainerRef} className="stripes-container">
         {combinedInfoView
-          .map((image, i) => (
-            !image.childImageSharp
-              ? console.log(`Image not found for Yaml: ${JSON.stringify(image)}`)
-              : <button
-                onClick={() => setShowDetails(showDetails !== i ? i : -1)}
-                className="stripe-container position-relative"
-                key={image.fileName}
-                style={{
-                  width: `${image.childImageSharp.fluid.aspectRatio * 350
-                    }px`,
-                  flexGrow: image.childImageSharp.fluid.aspectRatio * 350,
-                }}
-              >
-                <div className={`${showDetails === i && "show"} image-description p-2 bg-dark`}>
-                  <p className="text-light mb-1">{image.title}</p>
-                  <p className="text-light mb-0">{image.description}</p>
-                  {image.credit && <p className="text-light mb-0">Contributed By: {image.credit}</p>}
-                </div>
-                <div
-                  className="stripe-image-background"
+          .map((image, i) => {
+            const aspectRatio = image.childImageSharp.gatsbyImageData.width/image.childImageSharp.gatsbyImageData.height
+            return (
+              !image.childImageSharp
+                ? console.log(`Image not found for Yaml: ${JSON.stringify(image)}`)
+                : <button
+                  onClick={() => setShowDetails(showDetails !== i ? i : -1)}
+                  className="stripe-container position-relative"
+                  key={image.fileName}
                   style={{
-                    paddingBottom: `${100 / image.childImageSharp.fluid.aspectRatio
-                      }%`,
+                    width: `${aspectRatio * 350}px`,
+                    flexGrow: aspectRatio * 350,
                   }}
                 >
-                  <div className="stripe-image">
-                    <Img alt={image.title} fluid={image.childImageSharp.fluid} />
+                  <div className={`${showDetails === i && "show"} image-description p-2 bg-dark`}>
+                    <p className="text-light mb-1">{image.title}</p>
+                    <p className="text-light mb-0">{image.description}</p>
+                    {image.credit && <p className="text-light mb-0">Contributed By: {image.credit}</p>}
                   </div>
-                </div>
-              </button>
-          ))}
+                  <div
+                    className="stripe-image-background"
+                    style={{
+                      paddingBottom: `${100 / aspectRatio}%`
+                    }}
+                  >
+                    <div className="stripe-image">
+                      <GatsbyImage alt={image.title} image={image.childImageSharp.gatsbyImageData} />
+                    </div>
+                  </div>
+                </button>
+          )})}
       </div>
       <div className="paging-button-container">
         <div className="mt-2">
