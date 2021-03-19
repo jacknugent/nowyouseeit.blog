@@ -188,6 +188,7 @@ module.exports = {
         timeout: 3500,
       },
     },
+    `gatsby-plugin-image`,
     `gatsby-plugin-remove-trailing-slashes`,
     "gatsby-plugin-catch-links",
     // this (optional) plugin enables Progressive Web App + Offline functionality
