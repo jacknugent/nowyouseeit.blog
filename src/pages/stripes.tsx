@@ -65,7 +65,7 @@ export default function Stripes() {
   const stripeContainerRef = useRef(null);
   useOnOutsideClick(stripeContainerRef, () => setShowDetails(-1));
 
-  const resultsPerPage = 150;
+  const resultsPerPage = 50;
 
   const imageFiles = data.allFile.nodes;
   const imageYamls = data.allStripeImageDescriptionsYaml.nodes;
