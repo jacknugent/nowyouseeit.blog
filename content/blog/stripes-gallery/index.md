@@ -7,7 +7,7 @@ A while back, I made [a video](https://www.youtube.com/watch?v=Y1U4YkNkoG0) abou
 
 Finally, after going through hundreds of pictures you all submitted over the years, I turned them into a gallery of stripes at [nowyouseeit.com/stripes](https://www.nowyouseeit.com/stripes). Together, we made something never before seen in academia or on the internet: a living document of the power of stripes in film. Some of you had amazing insights from movies I had never even thought of! 
 
-As promised, if you submited an image that made it onto the website, I added your name to give you credit. Shoutout to Laura Wanco for finding the coolest stripe of all from _Strait Jacket_ (1964), which is the title image of this post.
+As promised, if you submitted an image that made it onto the website, I added your name to give you credit. Shoutout to Laura Wanco for finding the coolest stripe of all from _Strait Jacket_ (1964), which is the title image of this post.
 
 I'm blown away by the number of people who contributed incredible examples. Please keep submitting them! I'll continue updating the gallery. And if you have any feedback for the site/gallery, comment on this post on our [subreddit](https://reddit.com/r/nowyouseeit).
 
