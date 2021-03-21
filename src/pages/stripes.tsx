@@ -1,11 +1,13 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { graphql, useStaticQuery } from "gatsby";
-import Img, { FluidObject } from "gatsby-image";
+import { FluidObject } from "gatsby-image";
 import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image"
 import Layout from "../components/layout";
 import NewsletterForm from "../components/newsletterform";
 import SEO from "../components/seo";
 import useOnOutsideClick from "../hooks/useOnOutsideClick";
+import ReactDOM from "react-dom";
+import useStateRef from "../hooks/useStateRef";
 
 type StaticQuery = {
   allStripeImageDescriptionsYaml: {
@@ -31,6 +33,8 @@ type ImageFile = {
     fluid: FluidObject;
   }
 }
+
+type StripeImage = ImageFile & ImageYaml;
 
 export default function Stripes() {
   const data = useStaticQuery<StaticQuery>(graphql`
@@ -59,35 +63,73 @@ export default function Stripes() {
       }
     }
   `)
-  const [stripeSearch, setStripeSearch] = useState("");
-  const [showDetails, setShowDetails] = useState(-1);
-  const [page, setPage] = useState(1);
+  const [scrollTop, setScrollTop] = useState(0);
+  const [showDetails, setShowDetails, showDetailsRef] = useStateRef(-1);
+  const [domImageIndexes, setDomImageIndexes, domImageIndexesRef] = useStateRef<number[]>([]);
+  const documentEls = useRef<(HTMLDivElement | null)[]>([]);
   const stripeContainerRef = useRef(null);
   useOnOutsideClick(stripeContainerRef, () => setShowDetails(-1));
 
-  const resultsPerPage = 50;
+  const handleDomRecycle = () => {
+    var domIndexes = [...domImageIndexesRef.current];
+    console.log(domIndexes);
+    documentEls?.current.forEach((d, i) => {
+      if (d) {
+        const inDomRange = (d.getBoundingClientRect().top + d.clientHeight) > -1000 && d.getBoundingClientRect().bottom < window.innerHeight + d.clientHeight + 1000;
+
+        if (inDomRange) {
+          if (!domIndexes.includes(i)) {
+            domIndexes.push(i);
+          }
+          return;
+        }
+        if (domIndexes.includes(i))
+          domIndexes.splice(domIndexes.indexOf(i), 1);
+      }
+    });
+    setDomImageIndexes(domIndexes);
+  }
+
+  useEffect(() => {
+    handleDomRecycle();
+  }, [scrollTop])
+
+  const debounce = (func: (param?: any) => void, wait: number, immediate?: boolean) => {
+    var timeout: NodeJS.Timeout;
+    return function () {
+      var context = this, args = arguments;
+      var later = function () {
+        timeout = null;
+        if (!immediate) func.apply(context, args);
+      };
+      var callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      if (callNow) func.apply(context, args);
+    };
+  };
+
+  useEffect(() => {
+    handleDomRecycle();
+    window.addEventListener("scroll", debounce(() => setScrollTop(document.documentElement.scrollTop), 100));
+    window.addEventListener("resize", debounce(() => setScrollTop(document.documentElement.scrollTop), 100));
+
+    return () => {
+      window.removeEventListener("scroll", debounce(() => setScrollTop(document.documentElement.scrollTop), 100));
+      window.removeEventListener("resize", debounce(() => setScrollTop(document.documentElement.scrollTop), 100));
+    }
+  }, []);
 
   const imageFiles = data.allFile.nodes;
   const imageYamls = data.allStripeImageDescriptionsYaml.nodes;
-
   imageFiles.forEach(i =>
     !imageYamls.find(y => y.file === `${i.fileName}.${i.extension}`)
-    && console.error(`File ${i.fileName}.${i.extension} does not have an assocaited Yaml description`))
-
-  const combinedInfo = imageYamls
+    && console.error(`File ${i.fileName}.${i.extension} does not have an assocaited Yaml description`));
+  const images = imageYamls
     .map(y => ({
       ...y,
       ...imageFiles.find(i => `${i.fileName}.${i.extension}` === y.file),
-    }))
-    .filter(image => image.title && (image.title?.toLowerCase() || "").includes(stripeSearch.toLowerCase()));
-
-  const combinedInfoView = combinedInfo
-    .slice((page - 1) * resultsPerPage, ((page - 1) * resultsPerPage) + resultsPerPage);
-
-  const handlePageClick = (i: number) => {
-    setPage(i);
-    window.scrollTo(0, 425);
-  }
+    })) as StripeImage[];
 
   return (
     <Layout>
@@ -102,68 +144,45 @@ export default function Stripes() {
           </NewsletterForm>
         </div>
       </div>
-      <div className="stripe-search-container mb-2">
-        <label htmlFor="stripeSearch">Stripe Search</label>
-        <input
-          className="stripe-search-input p-1"
-          value={stripeSearch}
-          onChange={e => {
-            setStripeSearch(e.currentTarget.value)
-            setPage(1)
-          }}
-          type="text"
-          id="stripeSearch"
-          name="stripeSearch" />
-      </div>
-      <div ref={stripeContainerRef} className="stripes-container">
-        {combinedInfoView
+      {images.map((image, i) =>
+        domImageIndexes.includes(i) &&
+        <div key={i} className={`${showDetailsRef.current === i && "show"} image-description p-2 bg-dark`}>
+          <p className="text-light mb-1">{image.title}</p>
+          <p className="text-light mb-0">{image.description}</p>
+          {image.credit && <p className="text-light mb-0">Contributed By: {image.credit}</p>}
+        </div>)}
+      <div ref={stripeContainerRef} className="position-relative stripes-container">
+        {images
           .map((image, i) => {
-            const aspectRatio = image.childImageSharp.gatsbyImageData.width/image.childImageSharp.gatsbyImageData.height
+            const aspectRatio = image.childImageSharp.gatsbyImageData.width / image.childImageSharp.gatsbyImageData.height
             return (
               !image.childImageSharp
                 ? console.log(`Image not found for Yaml: ${JSON.stringify(image)}`)
                 : <button
                   onClick={() => setShowDetails(showDetails !== i ? i : -1)}
-                  className="stripe-container position-relative"
+                  className="stripe-container"
                   key={image.fileName}
                   style={{
                     width: `${aspectRatio * 350}px`,
                     flexGrow: aspectRatio * 350,
                   }}
                 >
-                  <div className={`${showDetails === i && "show"} image-description p-2 bg-dark`}>
-                    <p className="text-light mb-1">{image.title}</p>
-                    <p className="text-light mb-0">{image.description}</p>
-                    {image.credit && <p className="text-light mb-0">Contributed By: {image.credit}</p>}
-                  </div>
                   <div
                     className="stripe-image-background"
+                    id={`stripeImage${i}`}
+                    ref={(element) => { !documentEls.current.includes(element) && documentEls.current.push(element) }}
                     style={{
                       paddingBottom: `${100 / aspectRatio}%`
-                    }}
-                  >
-                    <div className="stripe-image">
-                      <GatsbyImage alt={image.title} image={image.childImageSharp.gatsbyImageData} />
-                    </div>
+                    }}>
+                    {domImageIndexes.includes(i) &&
+                      <div
+                        className="stripe-image">
+                        <GatsbyImage alt={image.title} image={image.childImageSharp.gatsbyImageData} />
+                      </div>}
                   </div>
                 </button>
-          )})}
-      </div>
-      <div className="paging-button-container">
-        <div className="mt-2">
-          {Math.ceil(combinedInfo.length / resultsPerPage) <= 1
-            ? null
-            : Array(Math.ceil(combinedInfo.length / resultsPerPage))
-              .fill(null)
-              .map((_, i) =>
-                <button
-                  key={i}
-                  onClick={() => handlePageClick(i + 1)}
-                  className={`paging-button ${(i + 1 === page) && "active"}`}
-                >
-                  {i + 1}
-                </button>)}
-        </div>
+            )
+          })}
       </div>
     </Layout >
   )

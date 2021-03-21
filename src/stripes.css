@@ -27,6 +27,7 @@
 
 .stripe-image-background {
   display: block;
+  background-color: var(--bg-dark);
 }
 
 .stripe-image {
