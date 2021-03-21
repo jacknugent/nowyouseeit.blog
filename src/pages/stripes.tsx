@@ -75,7 +75,7 @@ export default function Stripes() {
     console.log(domIndexes);
     documentEls?.current.forEach((d, i) => {
       if (d) {
-        const inDomRange = (d.getBoundingClientRect().top + d.clientHeight) > -1000 && d.getBoundingClientRect().bottom < window.innerHeight + d.clientHeight + 1000;
+        const inDomRange = (d.getBoundingClientRect().top + d.clientHeight) > -300 && d.getBoundingClientRect().bottom < window.innerHeight + d.clientHeight + 300;
 
         if (inDomRange) {
           if (!domIndexes.includes(i)) {

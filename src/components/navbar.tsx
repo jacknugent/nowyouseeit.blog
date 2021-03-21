@@ -91,7 +91,8 @@ export default function NavBar() {
                             onClick={() => document.body.style.overflow = "auto"}
                             className="nav-link"
                             to="/newsletter"
-                            activeClassName="active">
+                            activeClassName="active"
+                            partiallyActive={true}>
                             Newsletter
                         </Link>
                     </li>
@@ -100,7 +101,8 @@ export default function NavBar() {
                             onClick={() => document.body.style.overflow = "auto"}
                             className="nav-link"
                             to="/stripes"
-                            activeClassName="active">
+                            activeClassName="active"
+                            partiallyActive={true}>
                             Stripes
                         </Link>
                     </li>

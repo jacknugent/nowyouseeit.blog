@@ -1,6 +1,6 @@
 const path = require(`path`);
 const { createFilePath } = require(`gatsby-source-filesystem`);
-const { toKebabCase, combineYouTubePostsAndBlogPosts } = require("./plugins/gatsby-plugin-youtube-blog-helper");
+const { combineYouTubePostsAndBlogPosts } = require("./plugins/gatsby-plugin-youtube-blog-helper");
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
@@ -41,8 +41,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     `
   );
 
-  if (result.errors)
-  {
+  if (result.errors) {
     reporter.panicOnBuild(
       `There was an error loading your blog posts`,
       result.errors
@@ -56,14 +55,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
   // `context` is available in the template as a prop and as a variable in GraphQL
 
-  if (posts.length > 0)
-  {
+  if (posts.length > 0) {
     posts.forEach((post, index) => {
       const previousPostId = index === 0 ? null : posts[index - 1].id;
       const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id;
 
-      if (post.youtubeLink)
-      {
+      if (post.youtubeLink) {
         createPage({
           path: post.fields.slug,
           component: youtubePost,
@@ -92,8 +89,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
 
-  if (node.internal.type === `MarkdownRemark`)
-  {
+  if (node.internal.type === `MarkdownRemark`) {
     const value = createFilePath({ node, getNode });
 
     createNodeField({
