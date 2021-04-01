@@ -6,7 +6,6 @@ import Layout from "../components/layout";
 import NewsletterForm from "../components/newsletterform";
 import SEO from "../components/seo";
 import useOnOutsideClick from "../hooks/useOnOutsideClick";
-import ReactDOM from "react-dom";
 import useStateRef from "../hooks/useStateRef";
 
 type StaticQuery = {
@@ -72,15 +71,13 @@ export default function Stripes() {
 
   const handleDomRecycle = () => {
     var domIndexes = [...domImageIndexesRef.current];
-    console.log(domIndexes);
-    documentEls?.current.forEach((d, i) => {
+    documentEls?.current.forEach((d: HTMLDivElement, i: number) => {
       if (d) {
         const inDomRange = (d.getBoundingClientRect().top + d.clientHeight) > -300 && d.getBoundingClientRect().bottom < window.innerHeight + d.clientHeight + 300;
 
         if (inDomRange) {
-          if (!domIndexes.includes(i)) {
+          if (!domIndexes.includes(i))
             domIndexes.push(i);
-          }
           return;
         }
         if (domIndexes.includes(i))
