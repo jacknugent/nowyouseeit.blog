@@ -26,8 +26,8 @@ deploy_production:
   script:
     - pip install awscli
     - aws s3 sync public/ s3://nowyouseeit.com/ --delete --cache-control max-age=31557600,public
-    - aws s3 cp s3://nowyouseeit.com s3://nowyouseeit.com --recursive --exclude "*" --include "*.html" --metadata-directive REPLACE --cache-control max-age:no-cache --content-type text/html
-    - aws s3 cp s3://nowyouseeit.com s3://nowyouseeit.com --recursive --exclude "*" --include "*.json" --metadata-directive REPLACE --cache-control max-age:no-cache --content-type text/json
+    - aws s3 cp s3://nowyouseeit.com s3://nowyouseeit.com --recursive --exclude "*" --include "*.html" --metadata-directive REPLACE --cache-control public,max-age=0,must-revalidate --content-type text/html
+    - aws s3 cp s3://nowyouseeit.com s3://nowyouseeit.com --recursive --exclude "*" --include "*-data.json" --metadata-directive REPLACE --cache-control public,max-age=0,must-revalidate --content-type text/json
     - aws cloudfront create-invalidation --distribution-id E173U2COPVSRZF --paths '/*'
   environment:
     name: PROD
