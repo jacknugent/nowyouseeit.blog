@@ -15,8 +15,8 @@ export default function NewsletterForm({ children }) {
         if (emailInput) {
             try {
                 const result = await addToMailchimp(emailInput, null, null);
-                if(result.msg.includes("Almost finished...")) {
-                    result.msg = "Almost finished... To complete the subscription process, please click the link in the email we just sent you (it may be in your spam/promotions folder)";
+                if (result.msg.includes("Almost finished...")) {
+                    result.msg = "Almost finished... To complete the subscription process, please click the link in the email we just sent you (check your spam folder!)";
                 }
                 setMailChimpMessage(result);
             }
@@ -38,7 +38,7 @@ export default function NewsletterForm({ children }) {
                     <input
                         className="newsletter-input"
                         id="newsletterInput"
-                        type="text"
+                        type="email"
                         name="names"
                         placeholder="My email address is...."
                         onChange={e => setEmailInput(e.target.value)}

@@ -33,16 +33,15 @@ export default function NavBar() {
                 }
               }
         }`)
-    const [isClicked, setIsClicked] = useState<boolean | null>(null);
-
-    const handleClick = () => {
-        document.body.style.overflow = isClicked ? "auto" : "hidden";
-        setIsClicked(!isClicked);
-    }
+    const [isNavbarOpen, setIsNavbarOpen] = useState<boolean | null>(null);
 
     useEffect(() => {
-        window.addEventListener("resize", () => setIsClicked(null))
-        return () => window.removeEventListener("resize", () => setIsClicked(null));
+        document.body.style.overflow = isNavbarOpen ? "hidden" : "auto"
+    }, [isNavbarOpen])
+
+    useEffect(() => {
+        window.addEventListener("resize", () => setIsNavbarOpen(null))
+        return () => window.removeEventListener("resize", () => setIsNavbarOpen(null));
     }, [])
 
     const avatar = data?.avatar?.childImageSharp?.fixed
@@ -51,7 +50,7 @@ export default function NavBar() {
 
     return (
         <div className="navbar-container">
-            <Link to="/">
+            <Link to="/" onClick={() => setIsNavbarOpen(false)}>
                 {avatar && (
                     <Image
                         fixed={avatar}
@@ -62,7 +61,7 @@ export default function NavBar() {
                         }}
                     />
                 )}</Link>
-            <button aria-label="Toggle navbar" onClick={handleClick} className="hamburger">
+            <button aria-label="Toggle navbar" onClick={() => setIsNavbarOpen(!isNavbarOpen)} className="hamburger">
                 <svg viewBox="0 0 100 80" width="30" height="30">
                     <rect width="90" height="7" rx="8"></rect>
                     <rect y="30" width="90" height="7" rx="8"></rect>
@@ -71,9 +70,9 @@ export default function NavBar() {
             </button>
             <div
                 className={`navbar-nav
-                    ${isClicked === null
+                    ${isNavbarOpen === null
                         ? "hidden"
-                        : isClicked
+                        : isNavbarOpen
                             ? "active"
                             : "inactive"}`}>
                 <ul className="navbar-links">
