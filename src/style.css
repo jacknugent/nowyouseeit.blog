@@ -245,17 +245,6 @@ table thead tr th {
   border-bottom: 1px solid var(--color-accent);
 }
 
-/* Link */
-
-a {
-  color: var(--color-primary);
-}
-
-a:hover,
-a:focus {
-  text-decoration: none;
-}
-
 /* Button */
 .newsletter-button {
   background-color: var(--color-secondary);

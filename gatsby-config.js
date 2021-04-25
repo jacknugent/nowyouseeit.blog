@@ -69,6 +69,13 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
+        path: `${__dirname}/content/indiana-jones`,
+        name: `indianaJones`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
         path: `${__dirname}/content/stripe-gallery`,
         name: `stripeImageDescriptions`,
       },
@@ -139,7 +146,7 @@ module.exports = {
                   ) {
                   nodes {
                     description
-                    publishedAt(formatString: "MMMM DD, YYYY")
+                    publishedAt
                     title
                     localThumbnail {
                       publicURL
