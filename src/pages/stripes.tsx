@@ -136,9 +136,7 @@ export default function Stripes() {
           <h1>Stripes Gallery</h1>
           <p>Click each image for details.</p>
           <p>Learn more <a href="https://www.youtube.com/watch?v=Y1U4YkNkoG0">here</a>, or <a href="https://forms.gle/ZdmkHRQkJkmd7ARc8" target="_blank">submit your own</a>!</p>
-          <NewsletterForm>
-            Like what you See? You can get more articles and videos by joining the Now You See It newsletter. No spam, ever. Enter your email to join hundreds of others getting algorithm-free media criticism.
-          </NewsletterForm>
+          <NewsletterForm />
         </div>
       </div>
       {images.map((image, i) =>
